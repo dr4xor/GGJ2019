@@ -74,7 +74,14 @@ public class Waggon : MonoBehaviour
 
 		Vector3 connectionVector = (prevWaggonConnectionPoint - nextWaggonConnectionPoint).normalized;
 
+		
+
 		float yAngle = Vector3.Angle(Vector3.forward, connectionVector);
+
+		if(connectionVector.x < 0)
+		{
+			yAngle = -yAngle;
+		}
 
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, yAngle, transform.eulerAngles.z);
 
