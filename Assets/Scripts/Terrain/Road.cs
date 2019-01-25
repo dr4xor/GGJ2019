@@ -9,16 +9,15 @@ public class Road : MonoBehaviour
     private float bumpiness = 0.1f;
 
     [SerializeField]
-    private int tilesWide = 20;
+    private int tilesWide = 1;
 
     [SerializeField]
-    private int tilesLong = 100;
+    private int tilesLong = 1;
 
-    private Vector3[] terrainPoints;
+    public Vector3[] terrainPoints;
 
     private Mesh mesh;
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -27,14 +26,14 @@ public class Road : MonoBehaviour
 
 
 
-    terrainPoints = new Vector3[(tilesWide+1)*(tilesLong+1)];
+        terrainPoints = new Vector3[(tilesWide + 1) * (tilesLong + 1)];
         Vector2[] uv = new Vector2[terrainPoints.Length];
-        for (int y=0; y <= tilesLong; y++)
+        for (int y = 0; y <= tilesLong; y++)
         {
-            for (int x= 0; x <= tilesWide; x++)
+            for (int x = 0; x <= tilesWide; x++)
             {
-                terrainPoints[x + y * (tilesWide+1)] = new Vector3(tileWidth * x, Random.Range(0, bumpiness), tileLength * y);
-                uv[x + y * (tilesWide + 1)] = new Vector2((float) x / tilesWide, (float) y / tilesLong);
+                terrainPoints[x + y * (tilesWide + 1)] = new Vector3(tileWidth * x, Random.Range(0, bumpiness), tileLength * y);
+                uv[x + y * (tilesWide + 1)] = new Vector2((float)x / tilesWide, (float)y / tilesLong);
             }
         }
 
@@ -45,7 +44,7 @@ public class Road : MonoBehaviour
 
         GetComponent<MeshFilter>().mesh = mesh;
 
-        int[] triangles = new int[tilesLong*tilesWide*6];
+        int[] triangles = new int[tilesLong * tilesWide * 6];
         for (int y = 0; y < tilesLong; y++)
         {
             for (int x = 0; x < tilesWide; x++)
@@ -66,20 +65,9 @@ public class Road : MonoBehaviour
         GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (terrainPoints == null)
-            return;
-        Gizmos.color = Color.black;
-        for (int i = 0; i < terrainPoints.Length; i++)
-        {
-            Gizmos.DrawSphere(terrainPoints[i], 0.01f);
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
