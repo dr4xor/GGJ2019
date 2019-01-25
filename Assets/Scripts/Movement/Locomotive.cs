@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class Locomotive : Waggon
 {
 	public float RoadDistance = 10f;
 	public float RoadDiameter = 2f;
@@ -10,20 +10,24 @@ public class CarController : MonoBehaviour
 	public float CarFollowSpeed = 1f;
 	public float CarRotationMultiplier = 1f;
 
+	public float CarForwardSpeed = 1f;
+
 
 	public GameObject debug_car;
 
 	private float _targetCarX = 0f;
 	private float _carVelocityX;
 
+	private Rigidbody _rigidbody;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		_rigidbody = GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
-	void Update()
+	protected override void BeforeFixedUpdate()
 	{
 		// If the left mouse is pressed, update target pos
 		if (Input.GetMouseButton(0))
@@ -32,13 +36,6 @@ public class CarController : MonoBehaviour
 			_targetCarX = mouseX * (RoadDiameter / 2);
 		}
 
-
-
-		// Update Position
-		UpdateCarPosition();
-
-		// Update Rotation
-		UpdateCarRotation();
 	}
 
 
@@ -66,28 +63,22 @@ public class CarController : MonoBehaviour
 
 		return relativeMouseX;
 	}
-
-	/// <summary>
-	/// Sets the position of the car
-	/// </summary>
-	/// <param name="carX">Value between -1 - 1</param>
-	private void UpdateCarPosition()
+	
+	protected override void UpdatePosition()
 	{
-		Vector3 targetPos = new Vector3(_targetCarX, debug_car.transform.position.y, debug_car.transform.position.z);
+		Vector3 targetPos = new Vector3(_targetCarX, debug_car.transform.position.y, debug_car.transform.position.z + CarForwardSpeed * Time.deltaTime);
 
 		float oldCarX = debug_car.transform.position.x;
 
-		debug_car.transform.position = Vector3.Lerp(debug_car.transform.position, targetPos, Time.deltaTime * CarFollowSpeed);
+		debug_car.transform.position = Vector3.Lerp(debug_car.transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
 
 		float newCarX = debug_car.transform.position.x;
-
-
-		_carVelocityX = (newCarX - oldCarX) * (1 / Time.deltaTime);
+		
+		_carVelocityX = (newCarX - oldCarX) * (1 / Time.fixedDeltaTime);
 	}
 
-	private void UpdateCarRotation()
+	protected override void UpdateRotation()
 	{
-
 		debug_car.transform.eulerAngles = new Vector3(debug_car.transform.rotation.eulerAngles.x, _carVelocityX * CarRotationMultiplier, debug_car.transform.rotation.eulerAngles.z);
 	}
 }
