@@ -11,10 +11,9 @@ public class Locomotive : Waggon
 	public float CarRotationMultiplier = 1f;
 
 	public float CarForwardSpeed = 1f;
-
-
-	public GameObject debug_car;
-
+	
+	private List<Waggon> _waggonList = new List<Waggon>();
+	
 	private float _targetCarX = 0f;
 	private float _carVelocityX;
 
@@ -24,6 +23,7 @@ public class Locomotive : Waggon
 	void Start()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
+		_waggonList.Add(this);
 	}
 
 	// Update is called once per frame
@@ -66,19 +66,65 @@ public class Locomotive : Waggon
 	
 	protected override void UpdatePosition()
 	{
-		Vector3 targetPos = new Vector3(_targetCarX, debug_car.transform.position.y, debug_car.transform.position.z + CarForwardSpeed * Time.deltaTime);
+		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + CarForwardSpeed * Time.deltaTime);
 
-		float oldCarX = debug_car.transform.position.x;
+		float oldCarX = transform.position.x;
 
-		debug_car.transform.position = Vector3.Lerp(debug_car.transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
+		transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
 
-		float newCarX = debug_car.transform.position.x;
+		float newCarX = transform.position.x;
 		
 		_carVelocityX = (newCarX - oldCarX) * (1 / Time.fixedDeltaTime);
 	}
 
 	protected override void UpdateRotation()
 	{
-		debug_car.transform.eulerAngles = new Vector3(debug_car.transform.rotation.eulerAngles.x, _carVelocityX * CarRotationMultiplier, debug_car.transform.rotation.eulerAngles.z);
+		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, _carVelocityX * CarRotationMultiplier, transform.rotation.eulerAngles.z);
 	}
+
+
+	#region  WAGGON MANAGEMENT
+
+	public void AddWaggon(GameObject waggonPrefab)
+	{
+		Waggon waggon = waggonPrefab.GetComponent<Waggon>();
+
+		if (waggon == null)
+		{
+			Debug.LogError("Every Waggon Prefab needs to contain a Waggon Script! Waggon could not be added!");
+			return;
+		}
+
+
+		Waggon lastWaggon = _waggonList[_waggonList.Count - 1];
+
+		waggon.PreviousWaggon = lastWaggon;
+		lastWaggon.NextWaggon = waggon;
+
+		_waggonList.Add(waggon);
+	}
+
+	public void RemoveWaggon(int index)
+	{
+		if(_waggonList.Count <= index)
+		{
+			Debug.LogError("Invalid index (" + index + "). Train only has " + _waggonList.Count + " Waggons");
+			return;
+		}
+
+		if(index < 1)
+		{
+			Debug.LogError("Invalid index. Can not remove locomotive");
+			return;
+		}
+
+
+		_waggonList.RemoveRange(index, (_waggonList.Count - index));
+
+		_waggonList[index - 1].NextWaggon = null;
+
+
+	}
+
+	#endregion
 }
