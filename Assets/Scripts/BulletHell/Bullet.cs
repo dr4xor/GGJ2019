@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     public int lifeTime = 1;
     public GameObject hitAnimation;
+	public int damage = 1;
+
+	public bool IsFriendly = true;
 
     private Rigidbody rigidBody;
     private float timeToDie;
@@ -38,8 +41,35 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Launch(float speed)
+	private void OnTriggerEnter(Collider other)
+	{
+		if (IsFriendly)
+		{
+			if (other.CompareTag("Enemy"))
+			{
+				other.GetComponent<Enemy>().Health.ApplyDamage(damage);
+				DestroyEvent();
+			}
+			else if(other.CompareTag("SolidBarrier"))
+			{
+				DestroyEvent();
+			}
+		}
+
+	}
+
+	private void DestroyEvent()
+	{
+		if (hitAnimation != null)
+		{
+			Destroy(Instantiate(hitAnimation, transform.position, transform.rotation), 1f);
+		}
+		Destroy(gameObject);
+	}
+
+    public void Launch(Vector3 force)
     {
-        rigidBody.AddRelativeForce(Vector3.forward * speed);
+        rigidBody.AddForce(force, ForceMode.VelocityChange);
+
     }
 }

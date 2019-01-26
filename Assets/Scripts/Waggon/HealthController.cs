@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Waggon))]
-public class WaggonHealth : MonoBehaviour
+public class HealthController : MonoBehaviour
 {
+	public delegate void HealthEvent();
+
+	public HealthEvent OnHealthZero;
+
 	private Waggon _waggon;
 
 	[SerializeField]
@@ -24,7 +27,7 @@ public class WaggonHealth : MonoBehaviour
 				if(_currentHealth > 0)
 				{
 					_currentHealth = 0;
-					_waggon.OnHealthZero();
+					OnHealthZero.Invoke();
 				}
 				return;
 			}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletHellManager : MonoBehaviour
 {
+	public Vector3 relativeVelocity;
+	public bool IsFriendlyFire;
+
     public Bullet bullet;
     public string rotationFrequency;
     public string spawnFrequency;
@@ -82,7 +85,8 @@ public class BulletHellManager : MonoBehaviour
 
                 default:
                     Bullet obj = Instantiate<Bullet>(bullet, transform.position, transform.rotation);
-                    obj.Launch(speed);
+					obj.IsFriendly = IsFriendlyFire;
+					obj.Launch((transform.forward * speed) + relativeVelocity);
                     break;
 
             }
