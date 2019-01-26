@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 1
+  hitAnimation: {fileID: 3463314782945167257, guid: d931df867fbe1d047b01ee54c4f9509b,
+    type: 3}

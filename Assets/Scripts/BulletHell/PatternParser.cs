@@ -72,6 +72,11 @@
         return GetNextExecution();
     }
 
+    public int GetCurrentStep()
+    {
+        return currentStep;
+    }
+
     private int GetCalculatedIdx()
     {
         string cur = pattern[currentStep];
