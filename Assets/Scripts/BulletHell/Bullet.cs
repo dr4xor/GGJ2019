@@ -54,6 +54,17 @@ public class Bullet : MonoBehaviour
 				DestroyEvent();
 			}
 		}
+		else
+		{
+			if (other.CompareTag("Locomotive"))
+			{
+				other.GetComponent<Locomotive>().Health.ApplyDamage(damage);
+			}
+			else if (other.CompareTag("Waggon"))
+			{
+				other.GetComponent<Waggon>().Health.ApplyDamage(damage);
+			}
+		}
 
 	}
 

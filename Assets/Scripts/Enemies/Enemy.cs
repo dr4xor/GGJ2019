@@ -7,8 +7,7 @@ public class Enemy : MonoBehaviour
 	private HealthController _health;
 	public HealthController Health => _health;
 	
-	[SerializeField]
-	private BulletHellManager _bulletHellManager;
+	private BulletHellManager[] _bulletHellManagers;
 
 	[SerializeField] private GameObject _destroyEffect;
 
@@ -18,8 +17,13 @@ public class Enemy : MonoBehaviour
 		_health = GetComponent<HealthController>();
 		_health.OnHealthZero = OnHealthZero;
 
-		_bulletHellManager.enabled = true;
-		_bulletHellManager.IsFriendlyFire = false;
+		_bulletHellManagers = GetComponentsInChildren<BulletHellManager>(true);
+
+		foreach(BulletHellManager bhm in _bulletHellManagers)
+		{
+			bhm.enabled = true;
+			bhm.IsFriendlyFire = false;
+		}
 	}
 
     // Update is called once per frame
@@ -35,7 +39,10 @@ public class Enemy : MonoBehaviour
 			Destroy(Instantiate(_destroyEffect, transform.position, transform.rotation), 3f);
 		}
 
-		_bulletHellManager.enabled = false;
+		foreach (BulletHellManager bhm in _bulletHellManagers)
+		{
+			bhm.enabled = false;
+		}
 		
 		Destroy(gameObject);
 	}
