@@ -34,17 +34,32 @@ public class Waggon : MonoBehaviour
 
 	[SerializeField] private float _followSpeed;
 
+	protected virtual bool IsConnected => PreviousWaggon != null; 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PreviousWaggon == null)
+		{
+			// The Object is not connected to the train => It's collectable
+			gameObject.tag = "CollectableWaggon";
+		}
     }
+
+	public void OnCollectedEvent()
+	{
+		gameObject.tag = "Waggon";
+	}
 
     // Update is called once per frame
     void FixedUpdate()
     {
 		BeforeFixedUpdate();
-
+		
+		if(!IsConnected)
+		{
+			return;
+		}
 
 		UpdatePosition();
 
