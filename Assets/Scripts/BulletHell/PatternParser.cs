@@ -1,6 +1,7 @@
 ﻿public class PatternParser
 {
     private string[] pattern = new string[] { };
+    private bool globalLoop = false;
     private int currentStep;
     private int remainingLoops = -1;
     private int loopCount = 0;
@@ -8,11 +9,16 @@
     private int loopStart = 0;
     private int loopStep = 0;
 
-    public PatternParser(string pattern)
+    public PatternParser(string pattern, bool globalLoop = false)
     {
-        if (pattern.Length > 0)
+        this.globalLoop = globalLoop;
+        if (pattern != null && pattern.Length > 0)
         {
             this.pattern = pattern.Split(',');
+            for (var i = 0; i < this.pattern.Length; i++)
+            {
+                this.pattern[i] = this.pattern[i].Trim().ToLower();
+            }
         }
     }
 
@@ -24,7 +30,7 @@
         }
 
         int idx = GetCalculatedIdx();
-        return int.Parse(pattern[idx].Trim());
+        return int.Parse(pattern[idx]);
     }
 
     public string GetNextAction()
@@ -35,7 +41,7 @@
         }
 
         int idx = GetCalculatedIdx() + 1;
-        return pattern[idx].Trim();
+        return pattern[idx];
     }
 
     public int? Next()
@@ -58,19 +64,23 @@
         {
             currentStep += 2;
         }
+        if (globalLoop && currentStep >= pattern.Length)
+        {
+            currentStep = 0;
+        }
 
         return GetNextExecution();
     }
 
     private int GetCalculatedIdx()
     {
-        string cur = pattern[currentStep].Trim().ToLower();
+        string cur = pattern[currentStep];
         if (remainingLoops <= 0 && cur.StartsWith("loop"))
         {
             string[] arr = cur.Split(' ');
             loopLength = int.Parse(arr[1].Trim());
 
-            string loopCountStr = pattern[currentStep + 1].Trim();
+            string loopCountStr = pattern[currentStep + 1];
             if (loopCountStr == "*")
             {
                 loopCount = int.MaxValue;

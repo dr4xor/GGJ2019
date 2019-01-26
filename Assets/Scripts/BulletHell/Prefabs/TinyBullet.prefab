@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5883338738677206862}
   - component: {fileID: 5080378674310176316}
   - component: {fileID: 4750169626860160343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TinyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4812beed29967408d839f8c7f4bc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 1

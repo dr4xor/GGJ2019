@@ -15,6 +15,11 @@ namespace Tests
 
             Assert.IsNull(p.GetNextExecution());
             Assert.IsNull(p.GetNextAction());
+
+            p = new PatternParser(null);
+
+            Assert.IsNull(p.GetNextExecution());
+            Assert.IsNull(p.GetNextAction());
         }
 
         [Test]
@@ -29,6 +34,20 @@ namespace Tests
 
             Assert.IsNull(p.GetNextExecution());
             Assert.IsNull(p.GetNextAction());
+        }
+
+        [Test]
+        public void GlobalLoopingPattern()
+        {
+            PatternParser p = new PatternParser("500,x", true);
+
+            for (int i = 0; i < 100; i++)
+            {
+                Assert.True(p.GetNextExecution() > 0);
+                Assert.AreEqual("x", p.GetNextAction());
+
+                p.Next();
+            }
         }
 
         [Test]
@@ -50,7 +69,7 @@ namespace Tests
             Assert.AreEqual("y", p.GetNextAction());
 
             p.Next();
-            
+
             Assert.True(p.GetNextExecution() > 0);
             Assert.AreEqual("y", p.GetNextAction());
 

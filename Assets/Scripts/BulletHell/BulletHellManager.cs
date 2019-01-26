@@ -5,29 +5,87 @@ using UnityEngine;
 public class BulletHellManager : MonoBehaviour
 {
     public Bullet bullet;
-    public string frequencyPattern;
+    public string spawnFrequency;
+    public string rotationFrequency;
+    public float speed;
 
-    private float nextAction = 0;
-    private PatternParser pattern;
+    private float nextSpawnAction = float.MaxValue;
+    private float nextRotateAction = float.MaxValue;
+    private PatternParser spawnPattern;
+    private PatternParser rotatePattern;
 
-    void Start()
+    private void UpdateSpawnPattern(string value)
     {
-        pattern = new PatternParser(frequencyPattern);
-        nextAction = Time.time + (float)pattern.GetNextExecution() / 1000;
+        spawnPattern = new PatternParser(spawnFrequency, true);
+        if (spawnPattern.GetNextExecution() != null)
+        {
+            nextSpawnAction = Time.time + (float)spawnPattern.GetNextExecution() / 1000;
+        }
+    }
+
+    private void UpdateRotatePattern(string value)
+    {
+        rotatePattern = new PatternParser(rotationFrequency, true);
+        if (rotatePattern.GetNextExecution() != null)
+        {
+            nextRotateAction = Time.time + (float)rotatePattern.GetNextExecution() / 1000;
+        }
+    }
+
+    void Awake()
+    {
+        UpdateSpawnPattern(spawnFrequency);
+        UpdateRotatePattern(rotationFrequency);
     }
 
     void Update()
     {
-        if (Time.time >= nextAction)
+        if (Time.time >= nextSpawnAction)
         {
-            Instantiate<Bullet>(bullet);
+            string action = spawnPattern.GetNextAction();
+            switch (action)
+            {
+                case "delay":
+                    break;
 
-            if (pattern.Next() != null)
+                default:
+                    Bullet obj = Instantiate<Bullet>(bullet, transform.position, transform.rotation);
+                    obj.Launch(speed);
+                    break;
+
+            }
+
+            if (spawnPattern.Next() != null)
             {
-                nextAction = Time.time + (float)pattern.GetNextExecution() / 1000;
-            } else
+                nextSpawnAction = Time.time + (float)spawnPattern.GetNextExecution() / 1000;
+            }
+            else
             {
-                nextAction = float.MaxValue;
+                nextSpawnAction = float.MaxValue;
+            }
+        }
+
+        if (Time.time >= nextRotateAction)
+        {
+            string action = rotatePattern.GetNextAction();
+            switch (action)
+            {
+                case "delay":
+                    break;
+
+                default:
+                    int degrees = int.Parse(action);
+                    transform.Rotate(new Vector3(0, degrees, 0));
+                    break;
+            }
+
+            if (rotatePattern.Next() != null)
+            {
+                nextRotateAction = Time.time + (float)rotatePattern.GetNextExecution() / 1000;
+            }
+            else
+            {
+                nextRotateAction = float.MaxValue;
             }
         }
     }

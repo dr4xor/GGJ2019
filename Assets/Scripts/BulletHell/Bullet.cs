@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int lifeTime = 1;
+
+    private Rigidbody rigidBody;
+    private float timeToDie;
+
+    void Awake()
     {
-        
+        timeToDie = Time.time + lifeTime;
+        rigidBody = GetComponent<Rigidbody>();
+        if (rigidBody == null)
+        {
+            rigidBody = gameObject.AddComponent<Rigidbody>();
+        }
+        rigidBody.useGravity = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Time.time > timeToDie)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Launch(float speed)
+    {
+        rigidBody.AddRelativeForce(Vector3.forward * speed);
     }
 }
