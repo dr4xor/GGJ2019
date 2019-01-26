@@ -10,7 +10,7 @@ public class Locomotive : Waggon
 	public float CarFollowSpeed = 1f;
 	public float CarRotationMultiplier = 1f;
 
-	public float CarForwardSpeed = 1f;
+	public float LocomotiveSpeed = 1f;
 	
 	[SerializeField]
 	private List<Waggon> _waggonList = new List<Waggon>();
@@ -22,8 +22,10 @@ public class Locomotive : Waggon
 
 	private Rigidbody _rigidbody;
 
+	protected override bool IsConnected => true;
+
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 		_waggonList.Add(this);
@@ -69,7 +71,7 @@ public class Locomotive : Waggon
 	
 	protected override void UpdatePosition()
 	{
-		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + CarForwardSpeed * Time.deltaTime);
+		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + LocomotiveSpeed * Time.fixedDeltaTime);
 
 		float oldCarX = transform.position.x;
 		
@@ -91,13 +93,16 @@ public class Locomotive : Waggon
 		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, yEuler, GetTiltAngle());
 	}
 
+	public override void OnHealthZero()
+	{
+		Debug.Log("GAME OVER!");
+		LocomotiveSpeed = 0;
+	}
 
 	#region  WAGGON MANAGEMENT
 
-	public void AddWaggon(GameObject waggonPrefab)
+	public void AddWaggon(Waggon waggon)
 	{
-		Waggon waggon = waggonPrefab.GetComponent<Waggon>();
-
 		if (waggon == null)
 		{
 			Debug.LogError("Every Waggon Prefab needs to contain a Waggon Script! Waggon could not be added!");
@@ -111,6 +116,8 @@ public class Locomotive : Waggon
 		lastWaggon.NextWaggon = waggon;
 
 		_waggonList.Add(waggon);
+		
+		waggon.OnCollectedEvent();
 	}
 
 	public void RemoveWaggon(int index)

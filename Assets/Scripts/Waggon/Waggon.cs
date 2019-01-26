@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Waggon : MonoBehaviour
 {
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
 
+	private WaggonHealth _waggonHealth;
+	public WaggonHealth Health => _waggonHealth;
+
 	[SerializeField] private float _waggonLength;
 	public float WaggonLength => _waggonLength;
+
+	[SerializeField] private float _waggonWidth;
+	public float WaggonWidth => _waggonWidth;
 
 	[SerializeField] protected float _waggonTiltFactor;
 	protected const float MAX_Z_TILT = 30f;
@@ -34,17 +41,37 @@ public class Waggon : MonoBehaviour
 
 	[SerializeField] private float _followSpeed;
 
+	protected virtual bool IsConnected => PreviousWaggon != null; 
+
+	void Awake()
+	{
+		_waggonHealth = GetComponent<WaggonHealth>();
+		Assert.IsNotNull(_waggonHealth, "Sure you want a waggon without health?");
+	}
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PreviousWaggon == null)
+		{
+			// The Object is not connected to the train => It's collectable
+			gameObject.tag = "CollectableWaggon";
+		}
     }
+
+	public void OnCollectedEvent()
+	{
+		gameObject.tag = "Waggon";
+	}
 
     // Update is called once per frame
     void FixedUpdate()
     {
 		BeforeFixedUpdate();
-
+		
+		if(!IsConnected)
+		{
+			return;
+		}
 
 		UpdatePosition();
 
@@ -63,9 +90,14 @@ public class Waggon : MonoBehaviour
 		float targetX = prevWaggonPos.x;
 
 		float previousX = transform.position.x;
-		transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.fixedDeltaTime * _followSpeed), prevWaggonPos.y, prevWaggonPos.z - (PreviousWaggon._waggonLength / 2f) - (_waggonLength / 2f));
-
 		velocityX = (transform.position.x - previousX) * (1 / Time.fixedDeltaTime);
+		
+		// Calculate offset from the ground
+		float sin = Mathf.Sin(GetTiltAngle() * Mathf.Deg2Rad);
+		float tiltHeight = sin * (WaggonWidth / 2f);
+
+
+		transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.fixedDeltaTime * _followSpeed), tiltHeight, prevWaggonPos.z - (PreviousWaggon._waggonLength / 2f) - (_waggonLength / 2f));
 	}
 
 	protected virtual void UpdateRotation()
@@ -112,4 +144,12 @@ public class Waggon : MonoBehaviour
 
 		return zEuler;
 	}
+
+
+	public virtual void OnHealthZero()
+	{
+		PreviousWaggon.NextWaggon = null;
+		PreviousWaggon = null;
+	}
+
 }
