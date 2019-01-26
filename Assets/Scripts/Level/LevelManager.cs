@@ -9,14 +9,15 @@ public class LevelManager : MonoBehaviour
     public int tileSize = 25;
     public int roadTileCount = 30;
     public int sideTileCount = 5;
-    public float speed = -0.2f;
+    public float roadSpawnDelay = 1f;
 
     private Level level;
     private GameObject roadObject;
     private GameObject sideObject;
     private GameObject root;
-    private Transform lastRoad;
     private float startTime;
+    private float nextRowTime;
+    private int rowIdx;
     private float deleteTimeout = 20;
     private float horizonZ;
 
@@ -34,10 +35,12 @@ public class LevelManager : MonoBehaviour
     {
         if (startTime > 0)
         {
-            root.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            if (lastRoad.transform.position.z + tileSize < horizonZ)
+            if (Time.time > nextRowTime)
             {
-                CreateRow(new Vector3(0, 0, lastRoad.transform.position.z + tileSize), 0);
+                CreateRow(rowIdx);
+                rowIdx += 1;
+
+                nextRowTime = Time.time + roadSpawnDelay;
             }
 
             foreach (LevelSequence seq in level.sequences)
@@ -46,7 +49,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if (Time.time > seq.nextSpawnTime)
                     {
-                        Vector3 pos = new Vector3(startingPoint.position.x + Random.Range((float)-sideTileCount, (float)sideTileCount) * (float)tileSize, startingPoint.position.y, startingPoint.position.z + roadTileCount * tileSize);
+                        Vector3 pos = new Vector3(startingPoint.position.x + Random.Range((float)-sideTileCount, (float)sideTileCount) * (float)tileSize, startingPoint.position.y, startingPoint.position.z + rowIdx * tileSize);
 
                         int idx = Random.Range(0, seq.objects.Length);
                         GameObject obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
@@ -61,11 +64,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void CreateRow(Vector3 pos, int rowIdx)
+    private void CreateRow(int rowIdx)
     {
+        Vector3 pos = new Vector3(startingPoint.position.x, startingPoint.position.y, startingPoint.position.z + rowIdx * tileSize);
+
         GameObject obj = Instantiate(roadObject, pos, roadObject.transform.rotation);
         obj.transform.parent = root.transform;
-        lastRoad = obj.transform;
         Destroy(obj, deleteTimeout);
 
         for (int i2 = -sideTileCount; i2 <= sideTileCount; i2++)
@@ -84,7 +88,7 @@ public class LevelManager : MonoBehaviour
     private void CreateInitialLevel()
     {
         startTime = Time.time + 1;
-        deleteTimeout = 20; // TODO: calc this better, something along maybe Mathf.Abs(speed) * tileSize;
+        deleteTimeout = 25;
 
         root = new GameObject("LevelRuntime");
         root.transform.position = startingPoint.position;
@@ -93,10 +97,9 @@ public class LevelManager : MonoBehaviour
         roadObject = Resources.Load("Environment/" + level.artSet + "/road1", typeof(GameObject)) as GameObject;
         sideObject = Resources.Load("Environment/" + level.artSet + "/side1", typeof(GameObject)) as GameObject;
 
-        for (int i = 0; i < roadTileCount + 1; i++)
+        for (rowIdx = 0; rowIdx < roadTileCount + 1; rowIdx++)
         {
-            Vector3 newPos = new Vector3(startingPoint.position.x, startingPoint.position.y, startingPoint.position.z + i * tileSize);
-            CreateRow(newPos, i);
+            CreateRow(rowIdx);
         }
     }
 }
