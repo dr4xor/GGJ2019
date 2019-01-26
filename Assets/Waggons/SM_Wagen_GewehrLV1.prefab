@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 2355476096475042003}
   m_Layer: 0
   m_Name: SM_Wagen_GewehrLV1
-  m_TagString: Untagged
+  m_TagString: Waggon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   NextWaggon: {fileID: 0}
   _bulletHellManager: {fileID: 5505726318894239882}
   _waggonLength: 5
-  _waggonWidth: 3
+  _waggonWidth: 2
   _waggonTiltFactor: 3
   _followSpeed: 4
 --- !u!114 &6699576179958112116
@@ -476,11 +476,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2805184246172416006, guid: 46aa214c93dc5be4b8cad1f7f5698a83,
-        type: 3}
-      propertyPath: relativeParent
-      value: 
-      objectReference: {fileID: 389998266796853713}
     - target: {fileID: 2805184246172416006, guid: 46aa214c93dc5be4b8cad1f7f5698a83,
         type: 3}
       propertyPath: rotationFrequency

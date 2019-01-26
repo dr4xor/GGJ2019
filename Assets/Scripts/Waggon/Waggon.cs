@@ -123,7 +123,7 @@ public class Waggon : MonoBehaviour
 
 		// Calculate offset from the ground
 		float sin = Mathf.Sin(GetTiltAngle() * Mathf.Deg2Rad);
-		float tiltHeight = sin * (WaggonWidth / 2f);
+		float tiltHeight = Mathf.Abs(sin * (WaggonWidth / 2f));
 
 
 		transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.fixedDeltaTime * _followSpeed), tiltHeight, prevWaggonPos.z - (PreviousWaggon._waggonLength / 2f) - (_waggonLength / 2f));

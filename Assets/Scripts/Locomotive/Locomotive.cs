@@ -24,7 +24,7 @@ public class Locomotive : Waggon
 	[SerializeField] private float _maxFollowSpeed = 40f;
 	[SerializeField] private float _followInSeconds = 1f;
 
-	public float LocomotiveSpeed = 1f;
+	public float LocomotiveSpeedMS = 1f;
 	
 
 	public List<Waggon> Waggons
@@ -46,7 +46,7 @@ public class Locomotive : Waggon
 	private float _targetCarX = 0f;
 	private float _velocityDeltaX;
 
-	private Vector3 _velocity;
+	private float _velocityX;
 	
 	protected override bool IsConnected => true;
 
@@ -94,11 +94,13 @@ public class Locomotive : Waggon
 	
 	protected override void UpdatePosition()
 	{
-		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + LocomotiveSpeed * Time.fixedDeltaTime);
+		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + LocomotiveSpeedMS * Time.deltaTime);
 
 		float oldCarX = transform.position.x;
 
-		transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _velocity, _followInSeconds, _maxFollowSpeed);
+		float targetX = Mathf.SmoothDamp(transform.position.x, targetPos.x, ref _velocityX, _followInSeconds, _maxFollowSpeed);
+
+		transform.position = new Vector3(targetX, targetPos.y, targetPos.z);
 
 		//transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
 
@@ -128,7 +130,7 @@ public class Locomotive : Waggon
 	public override void OnHealthZero()
 	{
 		Debug.Log("GAME OVER!");
-		LocomotiveSpeed = 0;
+		LocomotiveSpeedMS = 0;
 	}
 
 	#region  WAGGON MANAGEMENT

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,17 @@ public class LocomotiveTest : MonoBehaviour
 	private void Start()
 	{
 		Locomotive lockomotive = GetComponent<Locomotive>();
+		
 
-		for(int i = 0; i < waggonCount; i++)
+		for (int i = 0; i < waggonCount; i++)
 		{
 			lockomotive.AddWaggon(Instantiate(waggonTestPrefab.GetComponent<Waggon>()));
 		}
+		
+	}
+	
+	private void Update()
+	{
 	}
 }
 

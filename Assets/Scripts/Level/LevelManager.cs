@@ -5,6 +5,8 @@ using System.IO;
 
 public class LevelManager : MonoBehaviour
 {
+	public static LevelManager s;
+
     public Transform startingPoint;
     public int tileSize = 25;
     public int roadTileCount = 30;
@@ -21,6 +23,10 @@ public class LevelManager : MonoBehaviour
     private float deleteTimeout = 20;
     private float horizonZ;
 
+	void Awake()
+	{
+		s = this;
+	}
     void Start()
     {
         horizonZ = startingPoint.position.z + roadTileCount * tileSize;
