@@ -8,6 +8,12 @@ public class Waggon : MonoBehaviour
 	public Waggon NextWaggon;
 
 	[SerializeField] private float _waggonLength;
+	public float WaggonLength => _waggonLength;
+
+	[SerializeField] protected float _waggonTiltFactor;
+	protected const float MAX_Z_TILT = 30f;
+
+	protected float velocityX = 0f;
 
 	public Vector3 BackConnectionPoint
 	{
@@ -56,8 +62,10 @@ public class Waggon : MonoBehaviour
 
 		float targetX = prevWaggonPos.x;
 
+		float previousX = transform.position.x;
 		transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.fixedDeltaTime * _followSpeed), prevWaggonPos.y, prevWaggonPos.z - (PreviousWaggon._waggonLength / 2f) - (_waggonLength / 2f));
-		
+
+		velocityX = (transform.position.x - previousX) * (1 / Time.fixedDeltaTime);
 	}
 
 	protected virtual void UpdateRotation()
@@ -83,7 +91,25 @@ public class Waggon : MonoBehaviour
 			yAngle = -yAngle;
 		}
 
-		transform.eulerAngles = new Vector3(transform.eulerAngles.x, yAngle, transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3(transform.eulerAngles.x, yAngle, GetTiltAngle());
+	}
 
+	protected float GetTiltAngle()
+	{
+		float zEuler = -velocityX * _waggonTiltFactor;
+
+		if (Mathf.Abs(zEuler) > MAX_Z_TILT)
+		{
+			if (zEuler > 0)
+			{
+				zEuler = MAX_Z_TILT;
+			}
+			else
+			{
+				zEuler = -MAX_Z_TILT;
+			}
+		}
+
+		return zEuler;
 	}
 }

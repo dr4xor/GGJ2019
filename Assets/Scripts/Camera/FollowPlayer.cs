@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-	[SerializeField] private GameObject _player;
+	[SerializeField] private Locomotive _locomotive;
+	
 
-	[SerializeField] private float _playerOffsetZ;
+	[SerializeField]
+	private float _defaultDistanceY = 6f;
 
-    // Start is called before the first frame update
-    void Start()
+	[SerializeField]
+	private float _defaultDistanceZ = 6f;
+
+	private float cameraOffsetZ = 0f;
+	// Start is called before the first frame update
+	void Start()
     {
-        
-    }
+
+	}
 
     // Update is called once per frame
     void LateUpdate()
     {
-		Vector3 playerPos = _player.transform.position;
-		transform.position = new Vector3(transform.position.x, transform.position.y, playerPos.z + _playerOffsetZ);
+		Vector3 playerPos = _locomotive.transform.position;
+
+		float waggonDistanceExtra = 0f;
+		
+		foreach(Waggon waggon in _locomotive.Waggons)
+		{
+			waggonDistanceExtra += waggon.WaggonLength;
+		}
+
+		float cameraHeight = Mathf.Lerp(transform.position.y, _defaultDistanceY + waggonDistanceExtra, Time.deltaTime);
+		cameraOffsetZ = Mathf.Lerp(cameraOffsetZ, _defaultDistanceZ + waggonDistanceExtra, Time.deltaTime);
+
+		transform.position = new Vector3(transform.position.x, cameraHeight, playerPos.z - cameraOffsetZ);
+		
+		
     }
 }

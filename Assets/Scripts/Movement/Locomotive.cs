@@ -12,10 +12,13 @@ public class Locomotive : Waggon
 
 	public float CarForwardSpeed = 1f;
 	
+	[SerializeField]
 	private List<Waggon> _waggonList = new List<Waggon>();
+
+	public List<Waggon> Waggons => _waggonList;
 	
 	private float _targetCarX = 0f;
-	private float _carVelocityX;
+	private float _velocityDeltaX;
 
 	private Rigidbody _rigidbody;
 
@@ -69,17 +72,23 @@ public class Locomotive : Waggon
 		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + CarForwardSpeed * Time.deltaTime);
 
 		float oldCarX = transform.position.x;
+		
 
 		transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
 
 		float newCarX = transform.position.x;
-		
-		_carVelocityX = (newCarX - oldCarX) * (1 / Time.fixedDeltaTime);
+
+		float oldVelocity = velocityX;
+		velocityX = (newCarX - oldCarX) * (1 / Time.fixedDeltaTime);
+
+		_velocityDeltaX = (oldVelocity - velocityX);
 	}
 
 	protected override void UpdateRotation()
 	{
-		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, _carVelocityX * CarRotationMultiplier, transform.rotation.eulerAngles.z);
+		float yEuler = velocityX * CarRotationMultiplier;
+
+		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, yEuler, GetTiltAngle());
 	}
 
 
