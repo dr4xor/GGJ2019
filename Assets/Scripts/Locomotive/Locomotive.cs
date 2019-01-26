@@ -12,23 +12,31 @@ public class Locomotive : Waggon
 
 	public float LocomotiveSpeed = 1f;
 	
-	[SerializeField]
-	private List<Waggon> _waggonList = new List<Waggon>();
 
-	public List<Waggon> Waggons => _waggonList;
+	public List<Waggon> Waggons
+	{
+		get
+		{
+			List<Waggon> waggons = new List<Waggon>();
+			Waggon currentWaggon = this;
+			while(currentWaggon != null)
+			{
+				waggons.Add(currentWaggon);
+				currentWaggon = currentWaggon.NextWaggon;
+			}
+
+			return waggons;
+		}
+	}
 	
 	private float _targetCarX = 0f;
 	private float _velocityDeltaX;
-
-	private Rigidbody _rigidbody;
-
+	
 	protected override bool IsConnected => true;
 
 	// Start is called before the first frame update
-	void Awake()
+	protected override void AfterAwake()
 	{
-		_rigidbody = GetComponent<Rigidbody>();
-		_waggonList.Add(this);
 	}
 
 	// Update is called once per frame
@@ -109,22 +117,25 @@ public class Locomotive : Waggon
 			return;
 		}
 
+		List<Waggon> waggons = Waggons;
 
-		Waggon lastWaggon = _waggonList[_waggonList.Count - 1];
+		Waggon lastWaggon = waggons[waggons.Count - 1];
 
 		waggon.PreviousWaggon = lastWaggon;
 		lastWaggon.NextWaggon = waggon;
 
-		_waggonList.Add(waggon);
+		waggons.Add(waggon);
 		
 		waggon.OnCollectedEvent();
 	}
 
 	public void RemoveWaggon(int index)
 	{
-		if(_waggonList.Count <= index)
+		List<Waggon> waggons = Waggons;
+
+		if (waggons.Count <= index)
 		{
-			Debug.LogError("Invalid index (" + index + "). Train only has " + _waggonList.Count + " Waggons");
+			Debug.LogError("Invalid index (" + index + "). Train only has " + waggons.Count + " Waggons");
 			return;
 		}
 
@@ -134,10 +145,7 @@ public class Locomotive : Waggon
 			return;
 		}
 
-
-		_waggonList.RemoveRange(index, (_waggonList.Count - index));
-
-		_waggonList[index - 1].NextWaggon = null;
+		waggons[index - 1].NextWaggon = null;
 
 
 	}

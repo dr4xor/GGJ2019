@@ -5,6 +5,10 @@ using UnityEngine.Assertions;
 
 public class Waggon : MonoBehaviour
 {
+	[SerializeField]
+	private Renderer _renderer;
+	public Renderer Renderer;
+
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
 
@@ -47,9 +51,16 @@ public class Waggon : MonoBehaviour
 	{
 		_waggonHealth = GetComponent<WaggonHealth>();
 		Assert.IsNotNull(_waggonHealth, "Sure you want a waggon without health?");
+
+		AfterAwake();
 	}
-    // Start is called before the first frame update
-    void Start()
+
+	protected virtual void AfterAwake()
+	{
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
         if (PreviousWaggon == null)
 		{
