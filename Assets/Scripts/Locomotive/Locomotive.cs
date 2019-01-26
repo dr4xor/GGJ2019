@@ -93,6 +93,11 @@ public class Locomotive : Waggon
 		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, yEuler, GetTiltAngle());
 	}
 
+	public override void OnHealthZero()
+	{
+		Debug.Log("GAME OVER!");
+		LocomotiveSpeed = 0;
+	}
 
 	#region  WAGGON MANAGEMENT
 

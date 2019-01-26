@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocomotiveDetector : MonoBehaviour
+public class LocomotiveDetector : WaggonObjectDetector
 {
-	private Locomotive _locomotive;
+	private Locomotive _locomotive
+	{
+		get
+		{
+			return (Locomotive)_waggon;
+		}
+		set
+		{
+			_waggon = value;
+		}
+	}
 
     // Start is called before the first frame update
     void Start()
@@ -12,19 +22,9 @@ public class LocomotiveDetector : MonoBehaviour
 		_locomotive = GetComponent<Locomotive>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-	private void OnTriggerEnter(Collider other)
+	protected override void OnCollectableWaggonHit(Waggon waggon)
 	{
-		if(other.CompareTag("CollectableWaggon"))
-		{
-			// Collect the Waggon
-			_locomotive.AddWaggon(other.GetComponent<Waggon>());
-
-		}
+		_locomotive.AddWaggon(waggon);
 	}
+
 }

@@ -471,13 +471,14 @@ MonoBehaviour:
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
   _waggonLength: 0.1
+  _waggonWidth: 0
   _waggonTiltFactor: 2
   _followSpeed: 0
   RoadDistance: 5
   RoadDiameter: 8
   CarFollowSpeed: 2.5
   CarRotationMultiplier: 2
-  LocomotiveSpeed: 100
+  LocomotiveSpeed: 200
   _waggonList: []
 --- !u!114 &636624251
 MonoBehaviour:
