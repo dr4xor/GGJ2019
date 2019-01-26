@@ -19,7 +19,7 @@ public class WaggonHealth : MonoBehaviour
 		}
 		private set
 		{
-			if (_currentHealth + value < _maximumHealth)
+			if (value < _maximumHealth)
 			{
 				if(_currentHealth > 0)
 				{
@@ -29,7 +29,7 @@ public class WaggonHealth : MonoBehaviour
 				return;
 			}
 
-			if (_currentHealth + value > _maximumHealth)
+			if (value > _maximumHealth)
 			{
 				_currentHealth = _maximumHealth;
 				return;
@@ -49,5 +49,9 @@ public class WaggonHealth : MonoBehaviour
 	public void ApplyDamage(int damage)
 	{
 		CurrentHealth -= damage;
+
+
 	}
+	
+
 }

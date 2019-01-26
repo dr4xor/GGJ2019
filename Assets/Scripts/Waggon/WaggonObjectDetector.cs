@@ -39,6 +39,7 @@ public class WaggonObjectDetector : MonoBehaviour
 	
 	protected virtual void OnHarmfullObjectHit(HarmfullObject harmfullObject)
 	{
+		Debug.Log(gameObject.name + " Hit a harmfull object with " + harmfullObject.Damage + " damage");
 		_waggon.Health.ApplyDamage(harmfullObject.Damage);
 		harmfullObject.OnCollisionEvent();
 	}
