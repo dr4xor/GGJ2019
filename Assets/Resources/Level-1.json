@@ -4,7 +4,7 @@
     "sequences": [
         {
             "initialDelay": 0,
-			"endTime":10000,
+			"duration": 10000,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
 			"minRotation": -180,
