@@ -1,0 +1,14 @@
+{
+    "name": "The Chase Begins",
+    "artSet" : "desert",
+    "sequences": [
+        {
+            "initialDelay": 0,
+            "minSpawnDelay": 100,
+            "maxSpawnDelay": 1000,
+            "objects": [
+                "tree1", "rock1"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+LevelSpec
+
+Name
+Art Set
+Event Groups
+ Initial Delay
+ SpawnDelayRange
