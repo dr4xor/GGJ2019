@@ -5,19 +5,7 @@ using UnityEngine;
 public class Locomotive : Waggon
 {
 	public float RoadDistance = 10f;
-
-	[SerializeField] private float _startRoadDiameter;
-	[SerializeField] private float _roadDiameterPerMeter;
-
-	public float RoadDiameter
-	{
-		get
-		{
-			return _startRoadDiameter + _roadDiameterPerMeter * Waggons.Count;
-		}
-	}
-
-
+	
 	public float CarFollowSpeed = 1f;
 	public float CarRotationMultiplier = 1f;
 
@@ -62,7 +50,7 @@ public class Locomotive : Waggon
 		if (Input.GetMouseButton(0))
 		{
 			float mouseX = GetRelativeMouseX();
-			_targetCarX = mouseX * (RoadDiameter / 2);
+			_targetCarX = mouseX;
 		}
 	}
 
@@ -73,23 +61,8 @@ public class Locomotive : Waggon
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.z = RoadDistance;
 		Vector3 worldPoint = Camera.main.ScreenToWorldPoint(mousePos);
-
-		float mouseX = worldPoint.x;
-
-		float roadRadius = RoadDiameter / 2f;
-
-		if (mouseX > roadRadius)
-		{
-			mouseX = roadRadius;
-		}
-		else if (mouseX < -roadRadius)
-		{
-			mouseX = -roadRadius;
-		}
-
-		float relativeMouseX = mouseX / roadRadius;
-
-		return relativeMouseX;
+		
+		return worldPoint.x;
 	}
 	
 	protected override void UpdatePosition()
