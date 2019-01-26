@@ -126,7 +126,7 @@ public class Locomotive : Waggon
 
 		waggons.Add(waggon);
 		
-		waggon.OnCollectedEvent();
+		waggon.OnConnectEvent();
 	}
 
 	public void RemoveWaggon(int index)

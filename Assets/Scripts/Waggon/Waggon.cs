@@ -5,15 +5,14 @@ using UnityEngine.Assertions;
 
 public class Waggon : MonoBehaviour
 {
-	[SerializeField]
-	private Renderer _renderer;
-	public Renderer Renderer;
-
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
 
-	private WaggonHealth _waggonHealth;
-	public WaggonHealth Health => _waggonHealth;
+	[SerializeField]
+	private BulletHellManager _bulletHellManager;
+
+	private HealthController _waggonHealth;
+	public HealthController Health => _waggonHealth;
 
 	[SerializeField] private float _waggonLength;
 	public float WaggonLength => _waggonLength;
@@ -25,6 +24,8 @@ public class Waggon : MonoBehaviour
 	protected const float MAX_Z_TILT = 30f;
 
 	protected float velocityX = 0f;
+	protected float velocityZ = 0f;
+	public Vector3 Velocity => new Vector3(velocityX, 0f, velocityZ);
 
 	public Vector3 BackConnectionPoint
 	{
@@ -49,7 +50,9 @@ public class Waggon : MonoBehaviour
 
 	void Awake()
 	{
-		_waggonHealth = GetComponent<WaggonHealth>();
+		_waggonHealth = GetComponent<HealthController>();
+		_waggonHealth.OnHealthZero = OnHealthZero;
+
 		Assert.IsNotNull(_waggonHealth, "Sure you want a waggon without health?");
 
 		AfterAwake();
@@ -64,18 +67,33 @@ public class Waggon : MonoBehaviour
     {
         if (PreviousWaggon == null)
 		{
-			// The Object is not connected to the train => It's collectable
-			gameObject.tag = "CollectableWaggon";
+			OnDisconnectEvent();
 		}
     }
 
-	public void OnCollectedEvent()
+	public void OnConnectEvent()
 	{
 		gameObject.tag = "Waggon";
+		transform.parent = null;
+		
+		if (_bulletHellManager != null)
+		{
+			_bulletHellManager.enabled = true;
+		}
+	}
+	public void OnDisconnectEvent()
+	{
+		// The Object is not connected to the train => It's collectable
+		gameObject.tag = "CollectableWaggon";
+		if (_bulletHellManager != null)
+		{
+			_bulletHellManager.enabled = false;
+			_bulletHellManager.IsFriendlyFire = true;
+		}
 	}
 
-    // Update is called once per frame
-    void FixedUpdate()
+	// Update is called once per frame
+	void FixedUpdate()
     {
 		BeforeFixedUpdate();
 		
@@ -101,14 +119,22 @@ public class Waggon : MonoBehaviour
 		float targetX = prevWaggonPos.x;
 
 		float previousX = transform.position.x;
-		velocityX = (transform.position.x - previousX) * (1 / Time.fixedDeltaTime);
-		
+		float previousZ = transform.position.z;
+
 		// Calculate offset from the ground
 		float sin = Mathf.Sin(GetTiltAngle() * Mathf.Deg2Rad);
 		float tiltHeight = sin * (WaggonWidth / 2f);
 
 
 		transform.position = new Vector3(Mathf.Lerp(transform.position.x, targetX, Time.fixedDeltaTime * _followSpeed), tiltHeight, prevWaggonPos.z - (PreviousWaggon._waggonLength / 2f) - (_waggonLength / 2f));
+		
+		velocityX = (transform.position.x - previousX) * (1 / Time.fixedDeltaTime);
+		velocityZ = (transform.position.z - previousZ) * (1 / Time.fixedDeltaTime);
+
+		if(_bulletHellManager != null)
+		{
+			_bulletHellManager.relativeVelocity = Velocity;
+		}
 	}
 
 	protected virtual void UpdateRotation()
@@ -161,6 +187,13 @@ public class Waggon : MonoBehaviour
 	{
 		PreviousWaggon.NextWaggon = null;
 		PreviousWaggon = null;
+
+		Waggon currentWaggon = this;
+		while(currentWaggon != null)
+		{
+			currentWaggon.OnDisconnectEvent();
+			currentWaggon = currentWaggon.NextWaggon;
+		}
 	}
 
 }

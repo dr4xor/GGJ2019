@@ -26,9 +26,9 @@ public class WaggonObjectDetector : MonoBehaviour
 			// Collect the Waggon
 			OnCollectableWaggonHit(other.GetComponent<Waggon>());
 		}
-		else if (other.CompareTag("HarmfullObject"))
+		else if (other.CompareTag("SolidBarrier"))
 		{
-			OnHarmfullObjectHit(other.GetComponent<HarmfullObject>());
+			OnSolidBarrierHit(other.GetComponent<SolidBarrier>());
 		}
 	}
 
@@ -37,11 +37,11 @@ public class WaggonObjectDetector : MonoBehaviour
 	{
 	}
 	
-	protected virtual void OnHarmfullObjectHit(HarmfullObject harmfullObject)
+	protected virtual void OnSolidBarrierHit(SolidBarrier barrier)
 	{
-		Debug.Log(gameObject.name + " Hit a harmfull object with " + harmfullObject.Damage + " damage");
-		_waggon.Health.ApplyDamage(harmfullObject.Damage);
-		harmfullObject.OnCollisionEvent();
+		Debug.Log(gameObject.name + " Hit a harmfull object with " + barrier.Damage + " damage");
+		_waggon.Health.ApplyDamage(barrier.Damage);
+		barrier.OnCollisionEvent();
 	}
 
 

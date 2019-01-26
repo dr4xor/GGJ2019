@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Waggon
   - CollectableWaggon
-  - HarmfullObject
+  - FriendlyBullet
+  - SolidBarrier
+  - Enemy
   layers:
   - Default
   - TransparentFX

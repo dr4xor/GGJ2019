@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HarmfullObject : MonoBehaviour
+public class SolidBarrier : MonoBehaviour
 {
 	[SerializeField] private int _damage;
 	public int Damage => _damage;
