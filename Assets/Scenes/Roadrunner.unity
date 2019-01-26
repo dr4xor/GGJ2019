@@ -175,7 +175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187224726}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 8.82, y: 10.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -231,7 +231,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 57.67709
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011223770}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 21.4, y: 27.8, z: 9.1}
+  m_LocalPosition: {x: 1.55, y: 2.6, z: -9.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -365,8 +365,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254265188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22, y: 17.6, z: 83.7}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 1.63, y: 0.86, z: 0.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -437,21 +437,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363139621782415123, guid: bf6037c018af05f4dbd8d1ca71e9e6f9,
-        type: 3}
-      propertyPath: m_CookingOptions
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363139621782415124, guid: bf6037c018af05f4dbd8d1ca71e9e6f9,
-        type: 3}
-      propertyPath: tilesWide
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363139621782415124, guid: bf6037c018af05f4dbd8d1ca71e9e6f9,
-        type: 3}
-      propertyPath: tilesLong
-      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf6037c018af05f4dbd8d1ca71e9e6f9, type: 3}

@@ -1,0 +1,25 @@
+Bullet Hell Manager Specification
+
+*Component*
+
+Start Direction
+Rotation Pattern
+ 1000,5,50,5,loop 2 *
+Frequency Pattern
+ 0,x,50,x,loop 2 *
+Bullet Prefab
+
+*Bullet*
+
+Speed
+Lifetime
+Strength
+Spawn Effect
+Impact Effect
+
+*Compound Component*
+
+Component[]
+ Position
+ Prefab
+ 
