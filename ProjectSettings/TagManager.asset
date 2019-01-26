@@ -9,6 +9,7 @@ TagManager:
   - FriendlyBullet
   - SolidBarrier
   - Enemy
+  - Locomotive
   layers:
   - Default
   - TransparentFX

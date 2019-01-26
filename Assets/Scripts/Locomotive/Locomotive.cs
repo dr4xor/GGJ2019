@@ -5,10 +5,24 @@ using UnityEngine;
 public class Locomotive : Waggon
 {
 	public float RoadDistance = 10f;
-	public float RoadDiameter = 2f;
+
+	[SerializeField] private float _startRoadDiameter;
+	[SerializeField] private float _roadDiameterPerMeter;
+
+	public float RoadDiameter
+	{
+		get
+		{
+			return _startRoadDiameter + _roadDiameterPerMeter * Waggons.Count;
+		}
+	}
+
 
 	public float CarFollowSpeed = 1f;
 	public float CarRotationMultiplier = 1f;
+
+	[SerializeField] private float _maxFollowSpeed = 40f;
+	[SerializeField] private float _followInSeconds = 1f;
 
 	public float LocomotiveSpeed = 1f;
 	
@@ -31,6 +45,8 @@ public class Locomotive : Waggon
 	
 	private float _targetCarX = 0f;
 	private float _velocityDeltaX;
+
+	private Vector3 _velocity;
 	
 	protected override bool IsConnected => true;
 
@@ -48,7 +64,6 @@ public class Locomotive : Waggon
 			float mouseX = GetRelativeMouseX();
 			_targetCarX = mouseX * (RoadDiameter / 2);
 		}
-
 	}
 
 
@@ -82,9 +97,10 @@ public class Locomotive : Waggon
 		Vector3 targetPos = new Vector3(_targetCarX, transform.position.y, transform.position.z + LocomotiveSpeed * Time.fixedDeltaTime);
 
 		float oldCarX = transform.position.x;
-		
 
-		transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
+		transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _velocity, _followInSeconds, _maxFollowSpeed);
+
+		//transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
 
 		float newCarX = transform.position.x;
 
@@ -97,6 +113,14 @@ public class Locomotive : Waggon
 	protected override void UpdateRotation()
 	{
 		float yEuler = velocityX * CarRotationMultiplier;
+
+		if(yEuler > 80f)
+		{
+			yEuler = 80f;
+		} else if(yEuler < -80f)
+		{
+			yEuler = -80f;
+		}
 
 		transform.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, yEuler, GetTiltAngle());
 	}
