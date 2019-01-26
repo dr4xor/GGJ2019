@@ -20,7 +20,7 @@ public class Waggon : MonoBehaviour
 	public float WaggonWidth => _waggonWidth;
 
 	[SerializeField] protected float _waggonTiltFactor;
-	protected const float MAX_Z_TILT = 30f;
+	protected const float MAX_Z_TILT = 20f;
 
 	protected float velocityX = 0f;
 	protected float velocityZ = 0f;

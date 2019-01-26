@@ -22,7 +22,7 @@ public class HealthController : MonoBehaviour
 		}
 		private set
 		{
-			if (value < _maximumHealth)
+			if (value < 0)
 			{
 				if(_currentHealth > 0)
 				{
