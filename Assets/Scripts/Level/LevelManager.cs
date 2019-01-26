@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
+﻿using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-	public static LevelManager s;
+    public static LevelManager s;
 
     public Transform startingPoint;
     public int tileSize = 25;
@@ -20,17 +17,15 @@ public class LevelManager : MonoBehaviour
     private float startTime;
     private float nextRowTime;
     private int rowIdx;
-    private float deleteTimeout = 20;
-    private float horizonZ;
+    private float deleteTimeout = 10;
 
-	void Awake()
-	{
-		s = this;
-	}
+    void Awake()
+    {
+        s = this;
+    }
+
     void Start()
     {
-        horizonZ = startingPoint.position.z + roadTileCount * tileSize;
-
         TextAsset text = Resources.Load("Level-1") as TextAsset;
         level = JsonUtility.FromJson<Level>(text.text);
 
@@ -51,7 +46,7 @@ public class LevelManager : MonoBehaviour
 
             foreach (LevelSequence seq in level.sequences)
             {
-                if (Time.time > startTime + seq.initialDelay)
+                if (Time.time > startTime + seq.initialDelay / 1000 && (seq.duration == 0 || Time.time < startTime + seq.initialDelay / 1000 + seq.duration / 1000))
                 {
                     if (Time.time > seq.nextSpawnTime)
                     {
@@ -60,6 +55,9 @@ public class LevelManager : MonoBehaviour
                         int idx = Random.Range(0, seq.objects.Length);
                         GameObject obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
                         obj = Instantiate(obj, pos, obj.transform.rotation);
+
+                        obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y + Random.Range(seq.minRotation, seq.maxRotation), obj.transform.localEulerAngles.z);
+
                         obj.transform.parent = root.transform;
                         Destroy(obj, deleteTimeout);
 
@@ -94,7 +92,6 @@ public class LevelManager : MonoBehaviour
     private void CreateInitialLevel()
     {
         startTime = Time.time + 1;
-        deleteTimeout = 25;
 
         root = new GameObject("LevelRuntime");
         root.transform.position = startingPoint.position;
