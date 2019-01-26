@@ -5,14 +5,14 @@ using UnityEngine;
 public class BulletHellManager : MonoBehaviour
 {
     public Bullet bullet;
-    public string spawnFrequency;
     public string rotationFrequency;
+    public string spawnFrequency;
     public float speed;
 
-    private float nextSpawnAction = float.MaxValue;
     private float nextRotateAction = float.MaxValue;
-    private PatternParser spawnPattern;
+    private float nextSpawnAction = float.MaxValue;
     private PatternParser rotatePattern;
+    private PatternParser spawnPattern;
 
     private void UpdateSpawnPattern(string value)
     {
@@ -40,6 +40,38 @@ public class BulletHellManager : MonoBehaviour
 
     void Update()
     {
+        if (Time.time >= nextRotateAction)
+        {
+            bool skipRotate = false;
+            string action = rotatePattern.GetNextAction();
+            switch (action)
+            {
+                case "delay":
+                    break;
+
+                case "sync":
+                    skipRotate = spawnPattern.GetCurrentStep() > 0;
+                    break;
+
+                default:
+                    int degrees = int.Parse(action);
+                    transform.Rotate(new Vector3(0, degrees, 0));
+                    break;
+            }
+
+            if (!skipRotate)
+            {
+                if (rotatePattern.Next() != null)
+                {
+                    nextRotateAction = Time.time + (float)rotatePattern.GetNextExecution() / 1000;
+                }
+                else
+                {
+                    nextRotateAction = float.MaxValue;
+                }
+            }
+        }
+
         if (Time.time >= nextSpawnAction)
         {
             string action = spawnPattern.GetNextAction();
@@ -65,28 +97,5 @@ public class BulletHellManager : MonoBehaviour
             }
         }
 
-        if (Time.time >= nextRotateAction)
-        {
-            string action = rotatePattern.GetNextAction();
-            switch (action)
-            {
-                case "delay":
-                    break;
-
-                default:
-                    int degrees = int.Parse(action);
-                    transform.Rotate(new Vector3(0, degrees, 0));
-                    break;
-            }
-
-            if (rotatePattern.Next() != null)
-            {
-                nextRotateAction = Time.time + (float)rotatePattern.GetNextExecution() / 1000;
-            }
-            else
-            {
-                nextRotateAction = float.MaxValue;
-            }
-        }
     }
 }
