@@ -7,9 +7,8 @@ public class Waggon : MonoBehaviour
 {
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
-
-	[SerializeField]
-	private BulletHellManager _bulletHellManager;
+	
+	private BulletHellManager[] _bulletHellManagers;
 
 	private HealthController _waggonHealth;
 	public HealthController Health => _waggonHealth;
@@ -65,7 +64,13 @@ public class Waggon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        if (PreviousWaggon == null)
+		_bulletHellManagers = GetComponentsInChildren<BulletHellManager>();
+		foreach (BulletHellManager bhm in _bulletHellManagers)
+		{
+			bhm.IsFriendlyFire = true;
+		}
+
+			if (!IsConnected)
 		{
 			OnDisconnectEvent();
 		}
@@ -76,19 +81,20 @@ public class Waggon : MonoBehaviour
 		gameObject.tag = "Waggon";
 		transform.parent = null;
 		
-		if (_bulletHellManager != null)
+		foreach(BulletHellManager bhm in _bulletHellManagers)
 		{
-			_bulletHellManager.enabled = true;
+			bhm.enabled = true;
 		}
+		
 	}
 	public void OnDisconnectEvent()
 	{
 		// The Object is not connected to the train => It's collectable
 		gameObject.tag = "CollectableWaggon";
-		if (_bulletHellManager != null)
+
+		foreach (BulletHellManager bhm in _bulletHellManagers)
 		{
-			_bulletHellManager.enabled = false;
-			_bulletHellManager.IsFriendlyFire = true;
+			bhm.enabled = false;
 		}
 	}
 
@@ -131,9 +137,9 @@ public class Waggon : MonoBehaviour
 		velocityX = (transform.position.x - previousX) * (1 / Time.fixedDeltaTime);
 		velocityZ = (transform.position.z - previousZ) * (1 / Time.fixedDeltaTime);
 
-		if(_bulletHellManager != null)
+		foreach (BulletHellManager bhm in _bulletHellManagers)
 		{
-			_bulletHellManager.relativeVelocity = Velocity;
+			bhm.relativeVelocity = Velocity;
 		}
 	}
 

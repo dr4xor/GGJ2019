@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1294260334423504762}
   m_Layer: 0
   m_Name: Locomotive
-  m_TagString: Untagged
+  m_TagString: Locomotive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   CarRotationMultiplier: 2
   _maxFollowSpeed: 30
   _followInSeconds: 0.3
-  LocomotiveSpeed: 200
+  LocomotiveSpeedMS: 25
 --- !u!114 &1294260334423504761
 MonoBehaviour:
   m_ObjectHideFlags: 0
