@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public int lifeTime = 1;
+    public int strength = 1;
     public GameObject hitAnimation;
 
     private Rigidbody rigidBody;
