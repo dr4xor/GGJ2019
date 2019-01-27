@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public TMPro.TextMeshProUGUI scoreText;
+    private int score;
+
     void Start()
     {
-
+        
     }
 
     void Update()
     {
-        if (Input.anyKey)
-        {
-            SceneManager.LoadScene("Level");
-        }
+        scoreText.text = "Score: " + score;
     }
 }
