@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 397035137}
   - component: {fileID: 397035139}
   m_Layer: 0
-  m_Name: Enemy_Pferdinand
+  m_Name: Enemy_Pferdinand_Right
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27d96abeab259e4d8e292fddd14d1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyEffect: {fileID: 0}
+  _destroyEffect: {fileID: 1945403422142716939, guid: 02de003696a6aa342a2d3824bc2fc8d5,
+    type: 3}
   _collisionDamage: 1
   relativeToLocomotive: 1
   relativeMovingDirection: {x: 0, y: 0, z: -4}
