@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
     private float nextRowTime;
     private int rowIdx;
     private float deleteTimeout = 20;
+    private Dictionary<string, GameObject> cache = new Dictionary<string, GameObject>();
 
     void Awake()
     {
@@ -92,7 +94,16 @@ public class LevelManager : MonoBehaviour
                             objPath = seq.globalObjects[idx];
                         }
 
-                        GameObject obj = Resources.Load(objPath, typeof(GameObject)) as GameObject;
+                        GameObject obj;
+                        if (cache.ContainsKey(objPath))
+                        {
+                            obj = cache[objPath];
+                        }
+                        else
+                        {
+                            obj = Resources.Load(objPath, typeof(GameObject)) as GameObject;
+                            cache[objPath] = obj;
+                        }
                         if (obj == null)
                         {
                             Debug.Log("Object not found: " + objPath);
