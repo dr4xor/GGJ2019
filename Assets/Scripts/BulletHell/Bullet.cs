@@ -3,11 +3,10 @@
 public class Bullet : MonoBehaviour
 {
     public int lifeTime = 1;
-    public int strength = 1;
+    public int damage = 1;
     public GameObject hitAnimation;
-	public int damage = 1;
 
-	public bool IsFriendly = true;
+    public bool IsFriendly = true;
 
     private Rigidbody rigidBody;
     private float timeToDie;
@@ -40,47 +39,47 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-	private void OnTriggerEnter(Collider other)
-	{
-		if (IsFriendly)
-		{
-			if (other.CompareTag("Enemy"))
-			{
-				other.GetComponent<Enemy>().Health.ApplyDamage(damage);
-				DestroyEvent();
-			}
-			else if(other.CompareTag("SolidBarrier"))
-			{
-				DestroyEvent();
-			}
-		}
-		else
-		{
-			if (other.CompareTag("Locomotive"))
-			{
-				other.GetComponent<Locomotive>().Health.ApplyDamage(damage);
-				DestroyEvent();
-			}
-			else if (other.CompareTag("Waggon"))
-			{
-				if (other.GetComponent<Waggon>().IsConnected)
-				{
-					other.GetComponent<Waggon>().Health.ApplyDamage(damage);
-					DestroyEvent();
-				}
-			}
-		}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (IsFriendly)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<Enemy>().Health.ApplyDamage(damage);
+                DestroyEvent();
+            }
+            else if (other.CompareTag("SolidBarrier"))
+            {
+                DestroyEvent();
+            }
+        }
+        else
+        {
+            if (other.CompareTag("Locomotive"))
+            {
+                other.GetComponent<Locomotive>().Health.ApplyDamage(damage);
+                DestroyEvent();
+            }
+            else if (other.CompareTag("Waggon"))
+            {
+                if (other.GetComponent<Waggon>().IsConnected)
+                {
+                    other.GetComponent<Waggon>().Health.ApplyDamage(damage);
+                    DestroyEvent();
+                }
+            }
+        }
 
-	}
+    }
 
-	private void DestroyEvent()
-	{
-		if (hitAnimation != null)
-		{
-			Destroy(Instantiate(hitAnimation, transform.position, transform.rotation), 1f);
-		}
-		Destroy(gameObject);
-	}
+    private void DestroyEvent()
+    {
+        if (hitAnimation != null)
+        {
+            Destroy(Instantiate(hitAnimation, transform.position, transform.rotation), 1f);
+        }
+        Destroy(gameObject);
+    }
 
     public void Launch(Vector3 force)
     {

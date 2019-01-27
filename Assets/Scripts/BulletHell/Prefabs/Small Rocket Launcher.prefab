@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 326674015963177022}
   - component: {fileID: 326674015963177023}
   m_Layer: 0
-  m_Name: Rocket Launcher
+  m_Name: Small Rocket Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade86eec9f1301549bcea5449c2d32c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4750169626860160343, guid: 352004b8514bccd4b8fa0068bceb0bb6, type: 3}
+  relativeVelocity: {x: 0, y: 0, z: 0}
+  bulletSpawnOffset: {x: 0, y: 0, z: 0}
+  IsFriendlyFire: 0
+  bullet: {fileID: 5172888098609596853, guid: 3c06b9642ff962043b5f63a61e711eaf, type: 3}
+  rotationFrequency: 20,1,loop 1,20,20,-1,loop 1,40,20,1,loop 1,20
   spawnFrequency: 50,x,50,x,50,x,2000,delay
-  rotationFrequency: 
   speed: 200

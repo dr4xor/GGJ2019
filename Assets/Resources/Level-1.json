@@ -33,13 +33,12 @@
             "id": "wave1",
 			"onRoads": false,
             "initialDelay": 0,
-			"duration": 100000,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
 			"minRotation": -20,
 			"maxRotation": 20,
             "objects": [
-                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret"
+                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret", "Enemies/Enemy_Panzer", "Enemy_Pferdinand_Left", "Enemy_Pferdinand_Right"
            ]
         }
     ]

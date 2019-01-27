@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960fca651e7bf5242a8a791443fad250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumHealth: 3
+  _maximumHealth: 2
+  _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6443195015325172114
 GameObject:

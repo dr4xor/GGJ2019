@@ -7,6 +7,8 @@ ModelImporter:
     400000: //RootNode
     2100000: Material.008
     2100002: Material.004
+    2100004: Material.028
+    2100006: Material.027
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane.004
