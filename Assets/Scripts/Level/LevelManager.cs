@@ -61,15 +61,32 @@ public class LevelManager : MonoBehaviour
                 {
                     if (Time.time > seq.nextSpawnTime)
                     {
-                        Vector3 pos = new Vector3(startingPoint.position.x + Random.Range((float)-sideTileCount, (float)sideTileCount) * (float)tileSize, startingPoint.position.y, startingPoint.position.z + rowIdx * tileSize);
+                        // find valid random position
+                        bool validPosition = false;
+                        Vector3 pos = Vector3.zero;
+                        while (!validPosition)
+                        {
+                            pos = new Vector3(startingPoint.position.x + Random.Range((float)-sideTileCount, (float)sideTileCount) * (float)tileSize, startingPoint.position.y, startingPoint.position.z + rowIdx * tileSize);
 
+                            if (seq.onRoads && !seq.onSides)
+                            {
+
+                            }
+                            if (seq.onSides && !seq.onRoads)
+                            {
+                                validPosition = pos.x >= 0 && pos.x <= tileSize;
+                            }
+                        }
+
+                        // load object
                         int idx = Random.Range(0, seq.objects.Length);
                         GameObject obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
                         obj = Instantiate(obj, pos, obj.transform.rotation);
+                        obj.transform.parent = root.transform;
 
+                        // rotate correctly
                         obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y + Random.Range(seq.minRotation, seq.maxRotation), obj.transform.localEulerAngles.z);
 
-                        obj.transform.parent = root.transform;
                         Destroy(obj, deleteTimeout);
 
                         seq.nextSpawnTime = Time.time + Random.Range(seq.minSpawnDelay, seq.maxSpawnDelay) / 1000f;
