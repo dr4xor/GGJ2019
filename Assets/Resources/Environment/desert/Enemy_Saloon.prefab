@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867292536}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 205.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1343685005}
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2810f502e99c124e89fee584e3e29f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletHellManager: {fileID: 0}
   _destroyEffect: {fileID: 0}
 --- !u!114 &9077672329516015476
 MonoBehaviour:
@@ -222,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 50
+  _currentHealth: 0
 --- !u!1001 &329302927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.99999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,delay,200,x
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -384,6 +389,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99999976
       objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 60,delay,200,x
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
 --- !u!4 &7311194724674492015 stripped
@@ -468,6 +478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.99999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 40,delay,200,x
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -639,6 +654,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99999976
       objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 20,delay,200,x
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
 --- !u!4 &7311194725752425788 stripped
@@ -724,6 +744,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.99999976
       objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 40,delay,200,x
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
 --- !u!4 &7311194726093153991 stripped
@@ -798,6 +823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 200,x
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}

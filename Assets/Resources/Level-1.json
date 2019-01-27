@@ -1,10 +1,13 @@
 {
     "name": "The Chase Begins",
-    "artSet" : "desert",
 	"music": "FutureWorld_PressOn_Loop",
+    "artSet" : "Desert",
+	"roads": ["road1", "road2", "road3"],
+	"sides": ["side1", "side2", "side3"],
     "sequences": [
         {
             "id": "props",
+			"onRoads": false,
 			"initialDelay": 0,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
@@ -16,6 +19,7 @@
         },
         {
             "id": "more-props",
+			"onRoads": false,
             "initialDelay": 30000,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
@@ -27,14 +31,15 @@
 		},
         {
             "id": "wave1",
-            "initialDelay": 10000,
-			"duration": 10000,
+			"onRoads": false,
+            "initialDelay": 0,
+			"duration": 100000,
             "minSpawnDelay": 100,
-            "maxSpawnDelay": 2000,
+            "maxSpawnDelay": 1000,
 			"minRotation": -20,
 			"maxRotation": 20,
             "objects": [
-                "saloon1"
+                "Enemy_Moleman", "Enemy_Saloon", "Enemy_Turret"
             ]
         }
     ]
