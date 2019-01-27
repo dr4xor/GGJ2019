@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
             bh.enabled = true;
         }
 
-        float motionSpeed = 1f; // 0.02f;
+        float motionSpeed = 0.02f;
         Time.timeScale = motionSpeed;
         Time.fixedDeltaTime = motionSpeed * 0.02f;
     }
