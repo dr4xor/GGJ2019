@@ -305,7 +305,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 50,delay,200,x
+      value: 50,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -395,7 +400,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 60,delay,200,x
+      value: 60,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -485,7 +495,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 40,delay,200,x
+      value: 40,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -571,6 +586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.99999976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 10,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -660,7 +685,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 20,delay,200,x
+      value: 20,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -750,7 +780,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 40,delay,200,x
+      value: 40,delay,2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
@@ -830,7 +865,12 @@ PrefabInstance:
     - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
         type: 3}
       propertyPath: spawnFrequency
-      value: 200,x
+      value: 2500,x,50,x,50,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898922394379807067, guid: a53d876a9a393e140947c77b3ee746de,
+        type: 3}
+      propertyPath: speed
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d876a9a393e140947c77b3ee746de, type: 3}
