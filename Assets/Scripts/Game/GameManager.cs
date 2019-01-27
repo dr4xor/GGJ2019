@@ -5,17 +5,20 @@ public class GameManager : MonoBehaviour
 {
     enum GameState
     {
-        InGame, Paused, GameOver
+        Ready, InGame, Paused, GameOver
     }
 
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI levelNameText;
     public GameObject tutorial;
     public GameObject newHighscore;
-    private GameState gameState = GameState.InGame;
+    public AudioClip loadingAudio;
+
+    private GameState gameState = GameState.Ready;
     private int levelIdx = 1;
     private int score = 0;
     private LevelManager levelManager;
+    private AudioSource audioSource;
     private Level level;
     private int highscore = 0;
     private bool newHighscoreShown = false;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         levelManager = GetComponent<LevelManager>();
+        audioSource = GetComponent<AudioSource>();
 
         highscore = PlayerPrefs.GetInt("highscore", highscore);
         levelIdx = PlayerPrefs.GetInt("level", levelIdx);
@@ -31,6 +35,40 @@ public class GameManager : MonoBehaviour
         levelNameText.text = level.name;
 
         StartCoroutine(ShowLevelIntro());
+    }
+
+    void Update()
+    {
+        switch (gameState)
+        {
+            case GameState.Ready:
+                if (Input.GetMouseButton(0))
+                {
+                    gameState = GameState.InGame;
+                    audioSource.clip = levelManager.getMusic();
+                    audioSource.Play();
+                }
+                break;
+
+            case GameState.InGame:
+                if (!newHighscoreShown && score > highscore)
+                {
+                    newHighscoreShown = true;
+                    StartCoroutine(ShowNewHighscore());
+                }
+
+                break;
+        }
+
+        float motionSpeed = 1;
+        if (!Input.GetMouseButton(0))
+        {
+            motionSpeed = 0.05f;
+        }
+        Time.timeScale = motionSpeed;
+        Time.fixedDeltaTime = motionSpeed * 0.02f;
+
+        scoreText.text = "Score: " + score;
     }
 
     IEnumerator ShowLevelIntro()
@@ -48,7 +86,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ShowNewHighscore()
     {
 
-        for (int i=0; i<5; i++)
+        for (int i = 0; i < 5; i++)
         {
             newHighscore.SetActive(true);
             yield return new WaitForSeconds(0.3f);
@@ -56,24 +94,5 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-    }
-
-    void Update()
-    {
-        if (!newHighscoreShown && score > highscore)
-        {
-            newHighscoreShown = true;
-            StartCoroutine(ShowNewHighscore());
-        }
-
-        float motionSpeed = 1;
-        if (!Input.GetMouseButton(0))
-        {
-            motionSpeed = 0.05f;
-        }
-        Time.timeScale = motionSpeed;
-        Time.fixedDeltaTime = motionSpeed * 0.02f;
-
-        scoreText.text = "Score: " + score;
     }
 }

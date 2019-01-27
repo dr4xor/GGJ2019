@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public float roadSpawnDelay = 1f;
 
     private Level level;
+    private AudioClip music;
     private GameObject roadObject;
     private GameObject sideObject;
     private GameObject root;
@@ -30,10 +31,16 @@ public class LevelManager : MonoBehaviour
         level = JsonUtility.FromJson<Level>(text.text);
 
         CreateInitialLevel();
+        music = Resources.Load("Environment/" + level.artSet + "/" + level.music) as AudioClip;
 
         startTime = Time.time + 0.01f;
 
         return level;
+    }
+
+    public AudioClip getMusic()
+    {
+        return music;
     }
 
     void Update()
