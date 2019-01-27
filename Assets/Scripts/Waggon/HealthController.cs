@@ -13,6 +13,7 @@ public class HealthController : MonoBehaviour
 	[SerializeField]
 	private int _maximumHealth = 1;
 
+	[SerializeField]
 	private int _currentHealth;
 	public int CurrentHealth
 	{
@@ -22,7 +23,7 @@ public class HealthController : MonoBehaviour
 		}
 		private set
 		{
-			if (value < 0)
+			if (value <= 0)
 			{
 				if(_currentHealth > 0)
 				{
@@ -51,6 +52,7 @@ public class HealthController : MonoBehaviour
 
 	public void ApplyDamage(int damage)
 	{
+		//Debug.Log(gameObject.name + " damage: " + damage);
 		CurrentHealth -= damage;
 
 
