@@ -36,7 +36,7 @@ public class Locomotive : Waggon
 
     private float _velocityX;
 
-    protected override bool IsConnected => true;
+    public override bool IsConnected => true;
 
     // Start is called before the first frame update
     protected override void AfterAwake()

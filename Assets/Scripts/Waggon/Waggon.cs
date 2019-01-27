@@ -50,7 +50,7 @@ public class Waggon : MonoBehaviour
 
 	[SerializeField] private float _followSpeed;
 
-	protected virtual bool IsConnected => PreviousWaggon != null; 
+	public virtual bool IsConnected => PreviousWaggon != null; 
 
 	void Awake()
 	{
@@ -97,7 +97,8 @@ public class Waggon : MonoBehaviour
 
 		// Spawn Connection Line
 		_connectionLine = (Instantiate(Resources.Load("WaggonConnectionLine", typeof(GameObject)) as GameObject)).GetComponent<LineRenderer>();
-		
+
+		GetComponent<Animator>().speed = 1f;
 	}
 	public void OnDisconnectEvent()
 	{
@@ -114,6 +115,8 @@ public class Waggon : MonoBehaviour
 			Destroy(_connectionLine.gameObject);
 			_connectionLine = null;
 		}
+		
+		GetComponent<Animator>().speed = 0f;
 	}
 
 	// Update is called once per frame
