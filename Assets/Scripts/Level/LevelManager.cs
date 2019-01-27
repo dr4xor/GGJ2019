@@ -70,11 +70,11 @@ public class LevelManager : MonoBehaviour
 
                             if (seq.onRoads && !seq.onSides)
                             {
-
+                                validPosition = pos.x >= 0 && pos.x <= tileSize;
                             }
                             if (seq.onSides && !seq.onRoads)
                             {
-                                validPosition = pos.x >= 0 && pos.x <= tileSize;
+                                validPosition = pos.x < -5f || pos.x > tileSize;
                             }
                         }
 

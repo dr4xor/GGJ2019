@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class GameManager : MonoBehaviour
 
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI levelNameText;
-    public GameObject tutorial;
-    public GameObject newHighscore;
+    public GameObject tutorialUI;
+    public GameObject newHighscoreUI;
+    public GameObject gameOverUI;
+    public GameObject player;
     public AudioClip loadingAudio;
 
     private GameState gameState = GameState.Ready;
@@ -20,6 +23,7 @@ public class GameManager : MonoBehaviour
     private LevelManager levelManager;
     private AudioSource audioSource;
     private Level level;
+    private HealthController health;
     private int highscore = 0;
     private bool newHighscoreShown = false;
 
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         levelManager = GetComponent<LevelManager>();
         audioSource = GetComponent<AudioSource>();
+        health = player.GetComponent<HealthController>();
 
         highscore = PlayerPrefs.GetInt("highscore", highscore);
         levelIdx = PlayerPrefs.GetInt("level", levelIdx);
@@ -39,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        float motionSpeed = 0.05f;
         switch (gameState)
         {
             case GameState.Ready:
@@ -48,6 +54,7 @@ public class GameManager : MonoBehaviour
                     audioSource.clip = levelManager.getMusic();
                     audioSource.Play();
                 }
+
                 break;
 
             case GameState.InGame:
@@ -56,15 +63,32 @@ public class GameManager : MonoBehaviour
                     newHighscoreShown = true;
                     StartCoroutine(ShowNewHighscore());
                 }
+                if (health.CurrentHealth <= 0)
+                {
+                    gameState = GameState.GameOver;
+                    levelNameText.gameObject.SetActive(false);
+                    tutorialUI.SetActive(false);
+                    gameOverUI.SetActive(true);
+                }
+
+                if (Input.GetMouseButton(0))
+                {
+                    motionSpeed = 1f;
+                }
+
+                break;
+
+            case GameState.GameOver:
+                motionSpeed = 0.005f;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SceneManager.LoadScene("Menu");
+                }
 
                 break;
         }
 
-        float motionSpeed = 1;
-        if (!Input.GetMouseButton(0))
-        {
-            motionSpeed = 0.05f;
-        }
         Time.timeScale = motionSpeed;
         Time.fixedDeltaTime = motionSpeed * 0.02f;
 
@@ -74,13 +98,13 @@ public class GameManager : MonoBehaviour
     IEnumerator ShowLevelIntro()
     {
         levelNameText.gameObject.SetActive(true);
-        tutorial.SetActive(true);
+        tutorialUI.SetActive(true);
 
         yield return new WaitForSeconds(5);
 
         levelNameText.gameObject.SetActive(false);
+        tutorialUI.SetActive(false);
         scoreText.gameObject.SetActive(true);
-        tutorial.SetActive(false);
     }
 
     IEnumerator ShowNewHighscore()
@@ -88,9 +112,9 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            newHighscore.SetActive(true);
+            newHighscoreUI.SetActive(true);
             yield return new WaitForSeconds(0.3f);
-            newHighscore.SetActive(false);
+            newHighscoreUI.SetActive(false);
             yield return new WaitForSeconds(0.1f);
         }
 
