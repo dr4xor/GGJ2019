@@ -218,6 +218,10 @@ Transform:
   m_Children:
   - {fileID: 3841346634457314630}
   - {fileID: 7097138154238322429}
+  - {fileID: 7402715281311673131}
+  - {fileID: 4533416158208813648}
+  - {fileID: 1993836768884511893}
+  - {fileID: 3210914989640113775}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -285,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _currentHealth: 0
 --- !u!114 &4034484207781005001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,3 +537,327 @@ Transform:
   m_Father: {fileID: 5152335317871938143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2243658700418757803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4285809877188742775}
+    m_Modifications:
+    - target: {fileID: 326674015963177020, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Rocket Launcher (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802315
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5208762163251826923, guid: 3c06b9642ff962043b5f63a61e711eaf,
+        type: 3}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,x,2000,delay
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9621d60cd25b1514790ca7e145e35465, type: 3}
+--- !u!4 &1993836768884511893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+    type: 3}
+  m_PrefabInstance: {fileID: 2243658700418757803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2884522999701847633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4285809877188742775}
+    m_Modifications:
+    - target: {fileID: 326674015963177020, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Rocket Launcher (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802315
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5208762163251826923, guid: 3c06b9642ff962043b5f63a61e711eaf,
+        type: 3}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,x,2000,delay
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9621d60cd25b1514790ca7e145e35465, type: 3}
+--- !u!4 &3210914989640113775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+    type: 3}
+  m_PrefabInstance: {fileID: 2884522999701847633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4206777338657540718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4285809877188742775}
+    m_Modifications:
+    - target: {fileID: 326674015963177020, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Rocket Launcher (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802315
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5208762163251826923, guid: 3c06b9642ff962043b5f63a61e711eaf,
+        type: 3}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,x,2000,delay
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9621d60cd25b1514790ca7e145e35465, type: 3}
+--- !u!4 &4533416158208813648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+    type: 3}
+  m_PrefabInstance: {fileID: 4206777338657540718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7076050132443450133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4285809877188742775}
+    m_Modifications:
+    - target: {fileID: 326674015963177020, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Rocket Launcher (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802315
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 5208762163251826923, guid: 3c06b9642ff962043b5f63a61e711eaf,
+        type: 3}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,x,2000,delay
+      objectReference: {fileID: 0}
+    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9621d60cd25b1514790ca7e145e35465, type: 3}
+--- !u!4 &7402715281311673131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 326674015963177022, guid: 9621d60cd25b1514790ca7e145e35465,
+    type: 3}
+  m_PrefabInstance: {fileID: 7076050132443450133}
+  m_PrefabAsset: {fileID: 0}

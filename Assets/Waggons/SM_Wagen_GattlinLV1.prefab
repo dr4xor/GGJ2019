@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _currentHealth: 0
 --- !u!114 &1024840745635072980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +697,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168121854136187118, guid: 1467b991b39e8a244a8bacf1d8a5d684,
+        type: 3}
+      propertyPath: rotationFrequency
+      value: 30,1,loop 1,50,500,delay,30,-1,loop 1,100,500,delay,30,1,loop 1,50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168121854136187118, guid: 1467b991b39e8a244a8bacf1d8a5d684,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 50,x,loop 1,60,1500,delay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1467b991b39e8a244a8bacf1d8a5d684, type: 3}

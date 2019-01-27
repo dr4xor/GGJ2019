@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _currentHealth: 0
 --- !u!114 &371235350960878025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 2805184246172416006, guid: 46aa214c93dc5be4b8cad1f7f5698a83,
         type: 3}
       propertyPath: spawnFrequency
-      value: 200,x
+      value: 500,x,loop 1,12,1000,delay
       objectReference: {fileID: 0}
     - target: {fileID: 2805184246172416006, guid: 46aa214c93dc5be4b8cad1f7f5698a83,
         type: 3}
