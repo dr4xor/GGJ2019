@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960fca651e7bf5242a8a791443fad250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumHealth: 1
+  _maximumHealth: 10
   _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!114 &5147010292529458906
@@ -417,6 +417,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2087833685421964349}
     m_Modifications:
+    - target: {fileID: 7248874072201559639, guid: 2e94663cf941b9544b065b0f869c8bcc,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Tesla
+      objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559637, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,11 +476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7248874072201559639, guid: 2e94663cf941b9544b065b0f869c8bcc,
-        type: 3}
-      propertyPath: m_Name
-      value: Small Tesla
       objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}

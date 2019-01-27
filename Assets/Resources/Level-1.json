@@ -45,7 +45,7 @@
             "id": "wave1",
 			"onRoads": false,
             "initialDelay": 10000,
-            "minSpawnDelay": 100,
+            "minSpawnDelay": 150,
             "maxSpawnDelay": 1000,
 			"minRotation": -20,
 			"maxRotation": 20,
@@ -56,9 +56,9 @@
         {
             "id": "wave2",
 			"onSides": false,
-            "initialDelay": 0,
-            "minSpawnDelay": 100,
-            "maxSpawnDelay": 1000,
+            "initialDelay": 20000,
+            "minSpawnDelay": 2000,
+            "maxSpawnDelay": 10000,
 			"minRotation": -20,
 			"maxRotation": 20,
             "globalObjects": [

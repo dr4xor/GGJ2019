@@ -184,6 +184,11 @@ PrefabInstance:
       propertyPath: _slider
       value: 
       objectReference: {fileID: 1873327181}
+    - target: {fileID: 1294260334423504761, guid: 8b426d33550b8a64cb283464146e5394,
+        type: 3}
+      propertyPath: _maximumHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b426d33550b8a64cb283464146e5394, type: 3}
 --- !u!1 &307080795
@@ -1614,7 +1619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -138.6, y: 0}
+  m_AnchoredPosition: {x: -163.7, y: 0}
   m_SizeDelta: {x: 348.8, y: 43.2}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1873327181
