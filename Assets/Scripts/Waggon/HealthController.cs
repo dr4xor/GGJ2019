@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class HealthController : MonoBehaviour
 
     [SerializeField]
     private int _maximumHealth = 1;
+
+	[SerializeField] private Slider _slider;
 
     [SerializeField]
     private int _currentHealth;
@@ -40,6 +43,14 @@ public class HealthController : MonoBehaviour
             _currentHealth = value;
         }
     }
+
+	private void Update()
+	{
+		if(_slider != null)
+		{
+			_slider.value = ((float)_currentHealth) / (float)_maximumHealth;
+		}
+	}
 
     private void Awake()
     {
