@@ -43,7 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade86eec9f1301549bcea5449c2d32c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  relativeVelocity: {x: 0, y: 0, z: 0}
+  bulletSpawnOffset: {x: 0, y: 0, z: 0}
+  IsFriendlyFire: 0
   bullet: {fileID: 4750169626860160343, guid: 352004b8514bccd4b8fa0068bceb0bb6, type: 3}
-  spawnFrequency: 50,x,200,x,loop 2,*
   rotationFrequency: 30,1,loop 1,50,1000,delay,5,-1,loop 1,50
+  spawnFrequency: 50,x,200,x,loop 2,*
   speed: 300
+  _soundFX: {fileID: 8300000, guid: 72b6c3fa11869b2479fe213aa63df6e0, type: 3}
+  _onlyPlayOnFire: 0

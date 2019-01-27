@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeVelocity: {x: 0, y: 0, z: 0}
+  bulletSpawnOffset: {x: 0, y: 0, z: 0}
   IsFriendlyFire: 0
   bullet: {fileID: 4750169626860160343, guid: 352004b8514bccd4b8fa0068bceb0bb6, type: 3}
   rotationFrequency: 
   spawnFrequency: 50,x,50,x,50,x,200,x
   speed: 100
+  _soundFX: {fileID: 8300000, guid: 72b6c3fa11869b2479fe213aa63df6e0, type: 3}
+  _onlyPlayOnFire: 1

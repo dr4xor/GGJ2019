@@ -50,3 +50,5 @@ MonoBehaviour:
   rotationFrequency: 
   spawnFrequency: 1500,x
   speed: 30
+  _soundFX: {fileID: 8300000, guid: 9e82274b1e7517a40aa3669e2b519836, type: 3}
+  _onlyPlayOnFire: 1

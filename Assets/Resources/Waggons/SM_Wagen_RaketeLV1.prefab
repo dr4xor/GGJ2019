@@ -164,6 +164,8 @@ MonoBehaviour:
     type: 3}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
+  _onDestroyEffect: {fileID: 1945403422142716939, guid: 02de003696a6aa342a2d3824bc2fc8d5,
+    type: 3}
   _waggonLength: 5
   _waggonWidth: 2
   _waggonTiltFactor: 3

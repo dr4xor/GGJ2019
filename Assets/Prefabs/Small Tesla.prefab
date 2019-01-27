@@ -113,3 +113,5 @@ MonoBehaviour:
     1,50
   spawnFrequency: 50,x,loop 1,60,1500,delay
   speed: 100
+  _soundFX: {fileID: 8300000, guid: 5eb51d76c4ee1f94486e92bc197afe5f, type: 3}
+  _onlyPlayOnFire: 0
