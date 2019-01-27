@@ -52,6 +52,18 @@
             "globalObjects": [
                  "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret", "Enemies/Enemy_Panzer", "Enemies/Enemy_Pferdinant_Left", "Enemies/Enemy_Pferdinand_Right"
            ]
+        },
+        {
+            "id": "wave2",
+			"onSides": false,
+            "initialDelay": 0,
+            "minSpawnDelay": 100,
+            "maxSpawnDelay": 1000,
+			"minRotation": -20,
+			"maxRotation": 20,
+            "globalObjects": [
+                 "Enemies/Panzersperre"
+           ]
         }
     ]
 }
