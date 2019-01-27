@@ -24,8 +24,13 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (Input.anyKey)
         {
+            PlayerPrefs.SetInt("level", 1);
             SceneManager.LoadScene("Level");
         }
     }

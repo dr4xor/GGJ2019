@@ -114,7 +114,7 @@ public class LevelManager : MonoBehaviour
                         // rotate correctly
                         obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y + Random.Range(seq.minRotation, seq.maxRotation), obj.transform.localEulerAngles.z);
 
-                        if (seq.objects != null && !objPath.StartsWith("Waggons/"))
+                        if (!objPath.StartsWith("Waggons/"))
                         {
                             Destroy(obj, deleteTimeout);
                         }

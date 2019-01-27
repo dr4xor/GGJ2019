@@ -91,7 +91,10 @@ public class GameManager : MonoBehaviour
                 {
                     targetTimeScale = 1f;
                 }
-
+                if (Input.GetKey(KeyCode.Escape))
+                {
+                    SceneManager.LoadScene("Menu");
+                }
                 break;
 
             case GameState.GameOver:
