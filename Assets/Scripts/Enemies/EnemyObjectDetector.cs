@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class EnemyObjectDetector : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyObjectDetector : MonoBehaviour
     void Start()
     {
 		_enemy = GetComponent<Enemy>();
+
+		Assert.IsNotNull(_enemy, "No enemy component found");
     }
 
     // Update is called once per frame

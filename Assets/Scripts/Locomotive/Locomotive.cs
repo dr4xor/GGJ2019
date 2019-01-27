@@ -72,12 +72,14 @@ public class Locomotive : Waggon
         float oldCarX = transform.position.x;
 
         float targetX = Mathf.SmoothDamp(transform.position.x, targetPos.x, ref _velocityX, _followInSeconds, _maxFollowSpeed);
+		
+		float previousZ = transform.position.z;
 
-        transform.position = new Vector3(targetX, targetPos.y, targetPos.z);
+		transform.position = new Vector3(targetX, targetPos.y, targetPos.z);
+		
+		velocityZ = (transform.position.z - previousZ) * (1 / Time.deltaTime);
 
-        //transform.position = Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * CarFollowSpeed);
-
-        float newCarX = transform.position.x;
+		float newCarX = transform.position.x;
 
         float oldVelocity = velocityX;
         velocityX = (newCarX - oldCarX) * (1 / Time.fixedDeltaTime);
