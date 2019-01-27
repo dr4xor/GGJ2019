@@ -219,8 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPoint: {fileID: 464570114}
   tileSize: 25
-  roadTileCount: 10
-  sideTileCount: 10
+  roadTileCount: 8
+  sideTileCount: 5
   roadSpawnDelay: 1
 --- !u!4 &307080797
 Transform:
@@ -255,6 +255,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 1332609243}
   player: {fileID: 1893383596}
   loadingAudio: {fileID: 8300000, guid: 6dc4be81296344087a45172d7ba5e06f, type: 3}
+  _scorePerSurvivedSecond: 1
 --- !u!82 &307080799
 AudioSource:
   m_ObjectHideFlags: 0

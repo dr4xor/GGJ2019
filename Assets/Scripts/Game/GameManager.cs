@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     private int highscore = 0;
     private bool newHighscoreShown = false;
 
-	private float scoreFloat = 0;
+    private float scoreFloat = 0;
 	[SerializeField] private int _scorePerSurvivedSecond;
 
     void Start()
@@ -64,10 +65,9 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.InGame:
-
 				scoreFloat += _scorePerSurvivedSecond * Time.deltaTime;
 				
-				if (!newHighscoreShown && score > highscore)
+				if (!newHighscoreShown && score > highscore && highscore > 0)
                 {
                     newHighscoreShown = true;
                     StartCoroutine(ShowNewHighscore());
@@ -88,7 +88,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.GameOver:
-				targetTimeScale = 0.005f;
+                if (score > highscore)
+                {
+                    PlayerPrefs.GetInt("highscore", score);
+                }
+                targetTimeScale = 0.005f;
 
                 if (Input.GetMouseButtonDown(0))
                 {
