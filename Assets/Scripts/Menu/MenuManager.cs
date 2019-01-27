@@ -9,6 +9,17 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(Flickering());
+
+        // activate full bullet hell
+        BulletHellManager[] bhm = FindObjectsOfType<BulletHellManager>();
+        foreach (BulletHellManager bh in bhm)
+        {
+            bh.enabled = true;
+        }
+
+        float motionSpeed = 0.02f;
+        Time.timeScale = motionSpeed;
+        Time.fixedDeltaTime = motionSpeed * 0.02f;
     }
 
     void Update()

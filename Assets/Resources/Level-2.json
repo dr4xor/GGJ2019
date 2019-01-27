@@ -1,9 +1,9 @@
 {
-    "name": "The Chase Begins",
+    "name": "High Stakes",
 	"music": "FutureWorld_PressOn_Loop",
-    "artSet" : "Desert",
-	"roads": ["road1", "road2", "road3"],
-	"sides": ["side1", "side2", "side3"],
+    "artSet" : "Forrest",
+	"roads": ["weg1", "weg2", "weg3"],
+	"sides": ["Seite1", "Seite2", "Seite3"],
     "sequences": [
         {
             "id": "props",
@@ -14,7 +14,7 @@
 			"minRotation": -180,
 			"maxRotation": 180,
             "objects": [
-                "tree1", "tree2","rock1","rock2"
+                "tanne1", "tanne2","stein1","stein2"
             ]
         },
         {
@@ -26,7 +26,7 @@
 			"minRotation": -180,
 			"maxRotation": 180,
             "objects": [
-                "tree3","tree4","rock3","rock4"
+                "tanne3","tanne4","stein3","stein4"
             ]
 		},
         {
@@ -39,8 +39,8 @@
 			"minRotation": -20,
 			"maxRotation": 20,
             "objects": [
-                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret"
-           ]
+                "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret"
+            ]
         }
     ]
 }
