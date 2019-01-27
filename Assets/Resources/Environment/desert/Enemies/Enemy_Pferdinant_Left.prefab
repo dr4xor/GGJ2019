@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 8
+  _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6821294599486835458
 GameObject:
@@ -540,6 +541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290461507528858033, guid: 25352df40a506b4468bf2116f4cdf1a8,
+        type: 3}
+      propertyPath: spawnFrequency
+      value: 1000,x,50,x,50,x
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25352df40a506b4468bf2116f4cdf1a8, type: 3}

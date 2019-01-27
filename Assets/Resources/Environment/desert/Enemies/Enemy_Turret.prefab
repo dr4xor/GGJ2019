@@ -322,7 +322,12 @@ PrefabInstance:
     - target: {fileID: 5510721833573890299, guid: f80203ba0bd3ca143a7094afc095003b,
         type: 3}
       propertyPath: spawnFrequency
-      value: 100,x,50,x,50,x,400,x
+      value: 100,x,50,x,50,x,1000,x
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510721833573890299, guid: f80203ba0bd3ca143a7094afc095003b,
+        type: 3}
+      propertyPath: rotationFrequency
+      value: 10,1,loop 1,30,10,-1,loop 1,60,10,1,loop 1,30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80203ba0bd3ca143a7094afc095003b, type: 3}
