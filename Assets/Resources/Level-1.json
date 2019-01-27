@@ -3,14 +3,37 @@
     "artSet" : "desert",
     "sequences": [
         {
-            "initialDelay": 0,
-			"duration": 10000,
+            "id": "props",
+			"initialDelay": 0,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
 			"minRotation": -180,
 			"maxRotation": 180,
             "objects": [
-                "tree1", "tree2","tree3","tree4","rock1","rock2","rock3","rock4"
+                "tree1", "tree2","rock1","rock2"
+            ]
+        },
+        {
+            "id": "more-props",
+            "initialDelay": 30000,
+            "minSpawnDelay": 100,
+            "maxSpawnDelay": 1000,
+			"minRotation": -180,
+			"maxRotation": 180,
+            "objects": [
+                "tree3","tree4","rock3","rock4"
+            ]
+		},
+        {
+            "id": "wave1",
+            "initialDelay": 10000,
+			"duration": 10000,
+            "minSpawnDelay": 100,
+            "maxSpawnDelay": 2000,
+			"minRotation": -20,
+			"maxRotation": 20,
+            "objects": [
+                "tree1", "tree2","rock1","rock2"
             ]
         }
     ]

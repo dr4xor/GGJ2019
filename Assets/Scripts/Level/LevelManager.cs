@@ -24,12 +24,16 @@ public class LevelManager : MonoBehaviour
         s = this;
     }
 
-    void Start()
+    public Level LoadLevel(int idx)
     {
-        TextAsset text = Resources.Load("Level-1") as TextAsset;
+        TextAsset text = Resources.Load("Level-" + idx) as TextAsset;
         level = JsonUtility.FromJson<Level>(text.text);
 
         CreateInitialLevel();
+
+        startTime = Time.time + 0.01f;
+
+        return level;
     }
 
     void Update()
@@ -91,8 +95,6 @@ public class LevelManager : MonoBehaviour
 
     private void CreateInitialLevel()
     {
-        startTime = Time.time + 1;
-
         root = new GameObject("LevelRuntime");
         root.transform.position = startingPoint.position;
         root.transform.rotation = startingPoint.rotation;
