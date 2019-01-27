@@ -21,6 +21,11 @@ public class WaggonObjectDetector : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if(!_waggon.IsConnected)
+		{
+			return;
+		}
+
 		if (other.CompareTag("CollectableWaggon"))
 		{
 			// Collect the Waggon
