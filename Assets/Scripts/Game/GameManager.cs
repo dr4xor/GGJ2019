@@ -19,13 +19,16 @@ public class GameManager : MonoBehaviour
 
     private GameState gameState = GameState.Ready;
     private int levelIdx = 1;
-    private int score = 0;
+	private int score => Mathf.FloorToInt(scoreFloat);
     private LevelManager levelManager;
     private AudioSource audioSource;
     private Level level;
     private HealthController health;
     private int highscore = 0;
     private bool newHighscoreShown = false;
+
+	private float scoreFloat = 0;
+	[SerializeField] private int _scorePerSurvivedSecond;
 
     void Start()
     {
@@ -42,10 +45,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowLevelIntro());
     }
 
+	private float targetTimeScale = 0.05f;
+
     void Update()
     {
-        float motionSpeed = 0.05f;
-        switch (gameState)
+		targetTimeScale = 0.05f;
+
+		switch (gameState)
         {
             case GameState.Ready:
                 if (Input.GetMouseButton(0))
@@ -58,7 +64,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.InGame:
-                if (!newHighscoreShown && score > highscore)
+
+				scoreFloat += _scorePerSurvivedSecond * Time.deltaTime;
+				
+				if (!newHighscoreShown && score > highscore)
                 {
                     newHighscoreShown = true;
                     StartCoroutine(ShowNewHighscore());
@@ -73,13 +82,13 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetMouseButton(0))
                 {
-                    motionSpeed = 1f;
+					targetTimeScale = 1f;
                 }
 
                 break;
 
             case GameState.GameOver:
-                motionSpeed = 0.005f;
+				targetTimeScale = 0.005f;
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -89,8 +98,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Time.timeScale = motionSpeed;
-        Time.fixedDeltaTime = motionSpeed * 0.02f;
+		float lerpedTimeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * 10);
+		
+        Time.timeScale = lerpedTimeScale;
+        Time.fixedDeltaTime = lerpedTimeScale * 0.02f;
 
         scoreText.text = "Score: " + score;
     }
