@@ -63,8 +63,11 @@ public class Bullet : MonoBehaviour
 			}
 			else if (other.CompareTag("Waggon"))
 			{
-				other.GetComponent<Waggon>().Health.ApplyDamage(damage);
-				DestroyEvent();
+				if (other.GetComponent<Waggon>().IsConnected)
+				{
+					other.GetComponent<Waggon>().Health.ApplyDamage(damage);
+					DestroyEvent();
+				}
 			}
 		}
 
