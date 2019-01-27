@@ -7,9 +7,12 @@ public class Enemy : MonoBehaviour
 	private HealthController _health;
 	public HealthController Health => _health;
 	
-	private BulletHellManager[] _bulletHellManagers;
+	protected BulletHellManager[] _bulletHellManagers;
 
 	[SerializeField] private GameObject _destroyEffect;
+
+	[SerializeField] private int _collisionDamage;
+	public int CollisionDamage => _collisionDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +27,13 @@ public class Enemy : MonoBehaviour
 			bhm.enabled = true;
 			bhm.IsFriendlyFire = false;
 		}
+		AfterStart();
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	protected virtual void AfterStart()
+	{
+	}
+	
 
 	private void OnHealthZero()
 	{

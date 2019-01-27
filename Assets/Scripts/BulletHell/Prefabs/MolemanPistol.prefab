@@ -48,5 +48,5 @@ MonoBehaviour:
   IsFriendlyFire: 0
   bullet: {fileID: 4750169626860160343, guid: 352004b8514bccd4b8fa0068bceb0bb6, type: 3}
   rotationFrequency: 
-  spawnFrequency: 300,x,50,x,50,x
+  spawnFrequency: 500,x,50,x,50,x
   speed: 100
