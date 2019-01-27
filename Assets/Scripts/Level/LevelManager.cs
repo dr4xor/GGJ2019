@@ -97,11 +97,12 @@ public class LevelManager : MonoBehaviour
                         GameObject obj;
                         if (cache.ContainsKey(objPath))
                         {
-                            obj = Resources.Load(objPath, typeof(GameObject)) as GameObject;
+                            obj = cache[objPath];
                         }
                         else
                         {
                             obj = Resources.Load(objPath, typeof(GameObject)) as GameObject;
+                            cache[objPath] = obj;
                         }
                         if (obj == null)
                         {
