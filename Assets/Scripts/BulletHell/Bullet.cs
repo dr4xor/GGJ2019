@@ -59,10 +59,12 @@ public class Bullet : MonoBehaviour
 			if (other.CompareTag("Locomotive"))
 			{
 				other.GetComponent<Locomotive>().Health.ApplyDamage(damage);
+				DestroyEvent();
 			}
 			else if (other.CompareTag("Waggon"))
 			{
 				other.GetComponent<Waggon>().Health.ApplyDamage(damage);
+				DestroyEvent();
 			}
 		}
 

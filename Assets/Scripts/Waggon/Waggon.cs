@@ -78,6 +78,7 @@ public class Waggon : MonoBehaviour
     {
 		if (!IsConnected)
 		{
+			gameObject.tag = "CollectableWaggon";
 			OnDisconnectEvent();
 		}
     }
@@ -101,7 +102,7 @@ public class Waggon : MonoBehaviour
 	public void OnDisconnectEvent()
 	{
 		// The Object is not connected to the train => It's collectable
-		gameObject.tag = "CollectableWaggon";
+		
 
 		foreach (BulletHellManager bhm in _bulletHellManagers)
 		{
