@@ -3383,6 +3383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991055c7ea72b5b4994b25b975b39348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flickerUI: {fileID: 1048401109}
 --- !u!4 &1798975645
 Transform:
   m_ObjectHideFlags: 0
