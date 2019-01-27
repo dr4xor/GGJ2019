@@ -255,6 +255,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 1332609243}
   player: {fileID: 1893383596}
   loadingAudio: {fileID: 8300000, guid: 6dc4be81296344087a45172d7ba5e06f, type: 3}
+  scoreForNextLevel: 100
   _scorePerSurvivedSecond: 1
 --- !u!82 &307080799
 AudioSource:

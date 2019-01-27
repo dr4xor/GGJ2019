@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,10 +16,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject player;
     public AudioClip loadingAudio;
+    public int scoreForNextLevel = 100;
 
     private GameState gameState = GameState.Ready;
     private int levelIdx = 1;
-	private int score => Mathf.FloorToInt(scoreFloat);
+    private int score => Mathf.FloorToInt(scoreFloat);
     private LevelManager levelManager;
     private AudioSource audioSource;
     private Level level;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool newHighscoreShown = false;
 
     private float scoreFloat = 0;
-	[SerializeField] private int _scorePerSurvivedSecond;
+    [SerializeField] private int _scorePerSurvivedSecond;
 
     void Start()
     {
@@ -46,13 +46,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowLevelIntro());
     }
 
-	private float targetTimeScale = 0.05f;
+    private float targetTimeScale = 0.05f;
 
     void Update()
     {
-		targetTimeScale = 0.05f;
+        targetTimeScale = 0.05f;
 
-		switch (gameState)
+        switch (gameState)
         {
             case GameState.Ready:
                 if (Input.GetMouseButton(0))
@@ -60,14 +60,16 @@ public class GameManager : MonoBehaviour
                     gameState = GameState.InGame;
                     audioSource.clip = levelManager.getMusic();
                     audioSource.Play();
+                    levelNameText.gameObject.SetActive(false);
+                    tutorialUI.SetActive(false);
                 }
 
                 break;
 
             case GameState.InGame:
-				scoreFloat += _scorePerSurvivedSecond * Time.deltaTime;
-				
-				if (!newHighscoreShown && score > highscore && highscore > 0)
+                scoreFloat += _scorePerSurvivedSecond * Time.deltaTime;
+
+                if (!newHighscoreShown && score > highscore && highscore > 0)
                 {
                     newHighscoreShown = true;
                     StartCoroutine(ShowNewHighscore());
@@ -79,10 +81,15 @@ public class GameManager : MonoBehaviour
                     tutorialUI.SetActive(false);
                     gameOverUI.SetActive(true);
                 }
+                if (score >= scoreForNextLevel && levelIdx == 1)
+                {
+                    PlayerPrefs.SetInt("level", levelIdx + 1);
+                    SceneManager.LoadScene("Level");
+                }
 
                 if (Input.GetMouseButton(0))
                 {
-					targetTimeScale = 1f;
+                    targetTimeScale = 1f;
                 }
 
                 break;
@@ -90,7 +97,7 @@ public class GameManager : MonoBehaviour
             case GameState.GameOver:
                 if (score > highscore)
                 {
-                    PlayerPrefs.GetInt("highscore", score);
+                    PlayerPrefs.SetInt("highscore", score);
                 }
                 targetTimeScale = 0.005f;
 
@@ -102,8 +109,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-		float lerpedTimeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * 10);
-		
+        float lerpedTimeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * 10);
+
         Time.timeScale = lerpedTimeScale;
         Time.fixedDeltaTime = lerpedTimeScale * 0.02f;
 

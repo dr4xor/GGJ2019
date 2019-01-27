@@ -30,17 +30,29 @@
             ]
 		},
         {
+            "id": "waggons",
+			"onSides": false,
+            "initialDelay": 0,
+            "minSpawnDelay": 1000,
+            "maxSpawnDelay": 10000,
+			"minRotation": -20,
+			"maxRotation": 20,
+            "globalObjects": [
+                 "Waggons/SM_Wagen_FlammenwerferLV1","Waggons/SM_Wagen_GattlinLV1","Waggons/SM_Wagen_GewehrLV1","Waggons/SM_Wagen_RaketeLV1","Waggons/SM_Wagen_TeslaLV1"
+           ]
+        },
+        {
             "id": "wave1",
 			"onRoads": false,
-            "initialDelay": 0,
-			"duration": 100000,
+            "initialDelay": 10000,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
 			"minRotation": -20,
 			"maxRotation": 20,
-            "objects": [
-                "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret"
-            ]
+            "globalObjects": [
+                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret", "Enemies/Enemy_Panzer", "Enemies/Enemy_Pferdinant_Left", "Enemies/Enemy_Pferdinand_Right"
+           ]
         }
+ 
     ]
 }
