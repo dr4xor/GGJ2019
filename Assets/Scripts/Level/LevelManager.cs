@@ -12,8 +12,8 @@ public class LevelManager : MonoBehaviour
 
     private Level level;
     private AudioClip music;
-    private GameObject roadObject;
-    private GameObject sideObject;
+    private GameObject[] roadObjects;
+    private GameObject[] sideObjects;
     private GameObject root;
     private float startTime;
     private float nextRowTime;
@@ -83,7 +83,8 @@ public class LevelManager : MonoBehaviour
     {
         Vector3 pos = new Vector3(startingPoint.position.x, startingPoint.position.y, startingPoint.position.z + rowIdx * tileSize);
 
-        GameObject obj = Instantiate(roadObject, pos, roadObject.transform.rotation);
+        int roadIdx = Random.Range(0, roadObjects.Length);
+        GameObject obj = Instantiate(roadObjects[roadIdx], pos, roadObjects[roadIdx].transform.rotation);
         obj.transform.parent = root.transform;
         Destroy(obj, deleteTimeout);
 
@@ -93,7 +94,8 @@ public class LevelManager : MonoBehaviour
             {
                 Vector3 newPos = new Vector3(pos.x + i2 * tileSize, pos.y, pos.z);
 
-                obj = Instantiate(sideObject, newPos, sideObject.transform.rotation);
+                int sideIdx = Random.Range(0, sideObjects.Length);
+                obj = Instantiate(sideObjects[sideIdx], newPos, sideObjects[sideIdx].transform.rotation);
                 obj.transform.parent = root.transform;
                 Destroy(obj, deleteTimeout);
             }
@@ -106,9 +108,19 @@ public class LevelManager : MonoBehaviour
         root.transform.position = startingPoint.position;
         root.transform.rotation = startingPoint.rotation;
 
-        roadObject = Resources.Load("Environment/" + level.artSet + "/road1", typeof(GameObject)) as GameObject;
-        sideObject = Resources.Load("Environment/" + level.artSet + "/side1", typeof(GameObject)) as GameObject;
+        // cache prefabs
+        roadObjects = new GameObject[level.roads.Length];
+        sideObjects = new GameObject[level.sides.Length];
+        for (int i = 0; i < level.roads.Length; i++)
+        {
+            roadObjects[i] = Resources.Load("Environment/" + level.artSet + "/" + level.roads[i], typeof(GameObject)) as GameObject;
+        }
+        for (int i = 0; i < level.sides.Length; i++)
+        {
+            sideObjects[i] = Resources.Load("Environment/" + level.artSet + "/" + level.sides[i], typeof(GameObject)) as GameObject;
+        }
 
+        // create initial roads
         for (rowIdx = 0; rowIdx < roadTileCount + 1; rowIdx++)
         {
             CreateRow(rowIdx);

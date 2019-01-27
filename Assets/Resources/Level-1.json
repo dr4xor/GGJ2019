@@ -1,7 +1,9 @@
 {
     "name": "The Chase Begins",
-    "artSet" : "desert",
 	"music": "FutureWorld_PressOn_Loop",
+    "artSet" : "desert",
+	"roads": ["road1", "road2", "road3"],
+	"sides": ["side1", "side2", "side3"],
     "sequences": [
         {
             "id": "props",
@@ -34,7 +36,7 @@
 			"minRotation": -20,
 			"maxRotation": 20,
             "objects": [
-                "saloon1"
+                "tree1"
             ]
         }
     ]
