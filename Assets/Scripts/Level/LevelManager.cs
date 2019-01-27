@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     private float startTime;
     private float nextRowTime;
     private int rowIdx;
-    private float deleteTimeout = 10;
+    private float deleteTimeout = 20;
 
     void Awake()
     {
@@ -103,7 +103,10 @@ public class LevelManager : MonoBehaviour
                         // rotate correctly
                         obj.transform.localEulerAngles = new Vector3(obj.transform.localEulerAngles.x, obj.transform.localEulerAngles.y + Random.Range(seq.minRotation, seq.maxRotation), obj.transform.localEulerAngles.z);
 
-                        Destroy(obj, deleteTimeout);
+                        if (seq.objects != null && !objPath.StartsWith("Waggons/"))
+                        {
+                            Destroy(obj, deleteTimeout);
+                        }
 
                         seq.nextSpawnTime = Time.time + Random.Range(seq.minSpawnDelay, seq.maxSpawnDelay) / 1000f;
                     }

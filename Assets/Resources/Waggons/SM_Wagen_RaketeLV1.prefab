@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!114 &435144608566561561
 MonoBehaviour:
@@ -480,12 +481,6 @@ PrefabInstance:
       propertyPath: spawnFrequency
       value: 50,x,2000,delay
       objectReference: {fileID: 0}
-    - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 5208762163251826923, guid: 3c06b9642ff962043b5f63a61e711eaf,
-        type: 3}
     - target: {fileID: 326674015963177023, guid: 9621d60cd25b1514790ca7e145e35465,
         type: 3}
       propertyPath: speed
