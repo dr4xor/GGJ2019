@@ -415,6 +415,8 @@ MonoBehaviour:
   _nextLevelWaggonPrefab: {fileID: 0}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
+  _onDestroyEffect: {fileID: 1945403422142716939, guid: 02de003696a6aa342a2d3824bc2fc8d5,
+    type: 3}
   _waggonLength: 7
   _waggonWidth: 4
   _waggonTiltFactor: 3
@@ -445,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!114 &730531950050720460
 MonoBehaviour:
@@ -751,11 +754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5828890317699653671}
     m_Modifications:
-    - target: {fileID: 7144798326393662219, guid: 3c6bf28781c92b0488f49747d2cd5f08,
-        type: 3}
-      propertyPath: m_Name
-      value: TankBullet
-      objectReference: {fileID: 0}
     - target: {fileID: 7144798326393662229, guid: 3c6bf28781c92b0488f49747d2cd5f08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -810,6 +808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144798326393662219, guid: 3c6bf28781c92b0488f49747d2cd5f08,
+        type: 3}
+      propertyPath: m_Name
+      value: TankBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6bf28781c92b0488f49747d2cd5f08, type: 3}

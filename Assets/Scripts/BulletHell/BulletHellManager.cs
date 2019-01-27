@@ -19,7 +19,7 @@ public class BulletHellManager : MonoBehaviour
 	[SerializeField] private AudioClip _soundFX;
 	[SerializeField] private bool _onlyPlayOnFire;
 
-	private const float AUDIO_SOURCE_VOLUME = 0.5f;
+	private const float AUDIO_SOURCE_VOLUME = 0.7f;
 
 	private AudioSource _audioSource;
 
@@ -49,8 +49,13 @@ public class BulletHellManager : MonoBehaviour
 		if(_soundFX != null)
 		{
 			_audioSource = gameObject.AddComponent<AudioSource>();
-			//_audioSource.volume = AUDIO_SOURCE_VOLUME;
+			_audioSource.volume = AUDIO_SOURCE_VOLUME;
+			_audioSource.playOnAwake = false;
 			_audioSource.clip = _soundFX;
+			if(!_onlyPlayOnFire)
+			{
+				_audioSource.loop = true;
+			}
 		}
 
 		if(!_onlyPlayOnFire && _audioSource != null)

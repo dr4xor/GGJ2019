@@ -255,6 +255,8 @@ MonoBehaviour:
     type: 3}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
+  _onDestroyEffect: {fileID: 1945403422142716939, guid: 02de003696a6aa342a2d3824bc2fc8d5,
+    type: 3}
   _waggonLength: 5
   _waggonWidth: 2
   _waggonTiltFactor: 3
@@ -272,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _slider: {fileID: 0}
   _currentHealth: 0
 --- !u!114 &5147010292529458906
 MonoBehaviour:
@@ -414,11 +417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2087833685421964349}
     m_Modifications:
-    - target: {fileID: 7248874072201559639, guid: 2e94663cf941b9544b065b0f869c8bcc,
-        type: 3}
-      propertyPath: m_Name
-      value: Small Tesla
-      objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559637, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -474,10 +472,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7248874072201559639, guid: 2e94663cf941b9544b065b0f869c8bcc,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Tesla
+      objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}
-      propertyPath: speed
-      value: 80
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 4733078684927764003, guid: 39df4d5f20904d8458c8c88d4fd97730,
+        type: 3}
+    - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
+        type: 3}
+      propertyPath: rotationFrequency
+      value: 1,4
       objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}
@@ -486,15 +495,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
         type: 3}
-      propertyPath: rotationFrequency
-      value: 1,4
+      propertyPath: speed
+      value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 7248874072201559638, guid: 2e94663cf941b9544b065b0f869c8bcc,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 4733078684927764003, guid: 39df4d5f20904d8458c8c88d4fd97730,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e94663cf941b9544b065b0f869c8bcc, type: 3}
 --- !u!4 &3936729848009919345 stripped

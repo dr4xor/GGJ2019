@@ -8,12 +8,14 @@ public class Waggon : MonoBehaviour
 	[SerializeField]
 	private Waggon _nextLevelWaggonPrefab;
 	public Waggon NextLevelWaggonPrefab => _nextLevelWaggonPrefab;
-
-
+	
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
 	
 	private BulletHellManager[] _bulletHellManagers;
+
+	[SerializeField]
+	private GameObject _onDestroyEffect;
 
 	private HealthController _waggonHealth;
 	public HealthController Health => _waggonHealth;
@@ -100,10 +102,13 @@ public class Waggon : MonoBehaviour
 
 		GetComponent<Animator>().speed = 1f;
 	}
-	public void OnDisconnectEvent()
+	public void OnDisconnectEvent(bool explode = false)
 	{
 		// The Object is not connected to the train => It's collectable
-		
+		if(explode)
+		{
+			Destroy(Instantiate(_onDestroyEffect, transform.position, transform.rotation), 5f);
+		}
 
 		foreach (BulletHellManager bhm in _bulletHellManagers)
 		{
@@ -235,7 +240,7 @@ public class Waggon : MonoBehaviour
 		Waggon currentWaggon = this;
 		while(currentWaggon != null)
 		{
-			currentWaggon.OnDisconnectEvent();
+			currentWaggon.OnDisconnectEvent(true);
 			currentWaggon = currentWaggon.NextWaggon;
 		}
 	}

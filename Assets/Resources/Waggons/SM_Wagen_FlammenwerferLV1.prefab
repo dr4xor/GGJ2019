@@ -292,6 +292,8 @@ MonoBehaviour:
     type: 3}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
+  _onDestroyEffect: {fileID: 1945403422142716939, guid: 02de003696a6aa342a2d3824bc2fc8d5,
+    type: 3}
   _waggonLength: 5
   _waggonWidth: 2
   _waggonTiltFactor: 3
@@ -309,6 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1
+  _slider: {fileID: 0}
+  _currentHealth: 0
 --- !u!114 &8970608371906120178
 MonoBehaviour:
   m_ObjectHideFlags: 0
