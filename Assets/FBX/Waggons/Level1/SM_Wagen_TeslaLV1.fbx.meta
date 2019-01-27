@@ -1,49 +1,35 @@
 fileFormatVersion: 2
-guid: 068dfd633ec4a5f4d94d58465899c216
+guid: 65ac983f3ee1cea4ba5a1b1250a94819
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature
-    100002: Armature.001
-    100004: Barrel
-    100006: Barrel_end
-    100008: BODY
-    100010: Body
-    100012: Cylinder
-    100014: Cylinder.002
-    100016: RAD1
-    100018: RAD1_end
-    100020: RAD2
-    100022: RAD2_end
-    100024: //RootNode
-    400000: Armature
-    400002: Armature.001
-    400004: Barrel
-    400006: Barrel_end
-    400008: BODY
-    400010: Body
-    400012: Cylinder
-    400014: Cylinder.002
-    400016: RAD1
-    400018: RAD1_end
-    400020: RAD2
-    400022: RAD2_end
-    400024: //RootNode
-    2100000: Grau1
-    2100002: Material.002
-    2100004: Silber
-    2100006: Braun2
-    2100008: Material.001
-    2100010: Braun3
-    2100012: Braun4
-    2100014: Material
-    4300000: Cylinder
-    4300002: Cylinder.002
-    7400000: Armature|ArmatureAction
-    7400002: Armature.001|Armature.001Action.001
+    100000: Armature.001
+    100002: BODY
+    100004: Cylinder.002
+    100006: RAD1
+    100008: RAD1_end
+    100010: RAD2
+    100012: RAD2_end
+    100014: //RootNode
+    400000: Armature.001
+    400002: BODY
+    400004: Cylinder.002
+    400006: RAD1
+    400008: RAD1_end
+    400010: RAD2
+    400012: RAD2_end
+    400014: //RootNode
+    2100000: Braun3
+    2100002: Braun2
+    2100004: Grau1
+    2100006: Silber
+    2100008: Braun4
+    2100010: Braun1
+    2100012: Orange
+    4300000: Cylinder.002
+    7400000: Armature.001|Armature.001Action.001
     9500000: //RootNode
-    13700000: Cylinder
-    13700002: Cylinder.002
+    13700000: Cylinder.002
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -72,7 +58,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature.001|Armature.001Action.001
+      takeName: Armature.001|Armature.001Action.001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

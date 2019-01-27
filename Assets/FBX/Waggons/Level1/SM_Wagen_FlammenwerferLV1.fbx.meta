@@ -1,20 +1,45 @@
 fileFormatVersion: 2
-guid: c1a0f8b71aec6ea42990143ad2ebed01
+guid: 1d887ff1e968ef443b9acb773b5c76d0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Material.004
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: c2a9ebd4a4418c946958d39d9a134868, type: 2}
+    100000: Armature.001
+    100002: BODY
+    100004: Cylinder.002
+    100006: RAD1
+    100008: RAD1_end
+    100010: RAD2
+    100012: RAD2_end
+    100014: //RootNode
+    400000: Armature.001
+    400002: BODY
+    400004: Cylinder.002
+    400006: RAD1
+    400008: RAD1_end
+    400010: RAD2
+    400012: RAD2_end
+    400014: //RootNode
+    2100000: Material
+    2100002: Braun2
+    2100004: Grau1
+    2100006: Silber
+    2100008: Material.003
+    2100010: Braun1
+    2100012: Schwarz1
+    2100014: Braun1.001
+    2100016: Rot1
+    2100018: Silber.001
+    2100020: Braun2.001
+    2100022: Material.001
+    2100024: Braun4.001
+    2100026: Material.002
+    2100028: Orange
+    4300000: Cylinder.002
+    7400000: Armature.001|Armature.001Action.001
+    9500000: //RootNode
+    13700000: Cylinder.002
+    2186277476908879412: ImportLogs
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -41,7 +66,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature.001|Armature.001Action.001
+      takeName: Armature.001|Armature.001Action.001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -66,8 +119,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -94,7 +147,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

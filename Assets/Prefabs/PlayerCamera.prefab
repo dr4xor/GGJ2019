@@ -100,5 +100,5 @@ MonoBehaviour:
   _defaultDistance: 0
   _defaultDistanceY: 1
   _defaultDistanceZ: 0.8
-  zoomOutDistancePerWaggonMeter: 2
+  zoomOutDistancePerWaggonMeter: 2.2
   zoomOutSpeed: 1

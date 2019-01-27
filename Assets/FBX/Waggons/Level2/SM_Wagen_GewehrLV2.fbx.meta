@@ -1,43 +1,52 @@
 fileFormatVersion: 2
-guid: 1d887ff1e968ef443b9acb773b5c76d0
+guid: 8654e24e90369f649b75341e5777d233
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature.001
+    100000: Armature.002
     100002: BODY
-    100004: Cylinder.002
-    100006: RAD1
-    100008: RAD1_end
-    100010: RAD2
-    100012: RAD2_end
-    100014: //RootNode
-    400000: Armature.001
+    100004: Cube
+    100006: LEG1
+    100008: LEG1_end
+    100010: LEG2
+    100012: LEG2_end
+    100014: LEG3
+    100016: LEG3_end
+    100018: LEG4
+    100020: LEG4_end
+    100022: //RootNode
+    400000: Armature.002
     400002: BODY
-    400004: Cylinder.002
-    400006: RAD1
-    400008: RAD1_end
-    400010: RAD2
-    400012: RAD2_end
-    400014: //RootNode
-    2100000: Material
-    2100002: Braun2
-    2100004: Grau1
-    2100006: Silber
-    2100008: Material.003
-    2100010: Braun1
-    2100012: Schwarz1
-    2100014: Braun1.001
+    400004: Cube
+    400006: LEG1
+    400008: LEG1_end
+    400010: LEG2
+    400012: LEG2_end
+    400014: LEG3
+    400016: LEG3_end
+    400018: LEG4
+    400020: LEG4_end
+    400022: //RootNode
+    2100000: Braun2
+    2100002: Grau1
+    2100004: Schwarz1
+    2100006: Orange
+    2100008: Silber
+    2100010: Gold
+    2100012: Braun1
+    2100014: Material
     2100016: Rot1
     2100018: Silber.001
     2100020: Braun2.001
     2100022: Material.001
-    2100024: Braun4.001
-    2100026: Material.002
-    2100028: Orange
-    4300000: Cylinder.002
-    7400000: Armature.001|Armature.001Action.001
+    2100024: Grau1.001
+    2100026: Braun4.001
+    2100028: Material.002
+    2100030: Braun1.001
+    4300000: Cube
+    7400000: Armature.002|Armature.002Action
     9500000: //RootNode
-    13700000: Cylinder.002
+    13700000: Cube
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -66,7 +75,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature.002|Armature.002Action
+      takeName: Armature.002|Armature.002Action
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

@@ -5,6 +5,11 @@ using UnityEngine.Assertions;
 
 public class Waggon : MonoBehaviour
 {
+	[SerializeField]
+	private Waggon _nextLevelWaggonPrefab;
+	public Waggon NextLevelWaggonPrefab => _nextLevelWaggonPrefab;
+
+
 	public Waggon PreviousWaggon;
 	public Waggon NextWaggon;
 	
@@ -25,7 +30,7 @@ public class Waggon : MonoBehaviour
 	protected float velocityX = 0f;
 	protected float velocityZ = 0f;
 	public Vector3 Velocity => new Vector3(velocityX, 0f, velocityZ);
-
+	
 	public Vector3 BackConnectionPoint
 	{
 		get
@@ -54,6 +59,13 @@ public class Waggon : MonoBehaviour
 
 		Assert.IsNotNull(_waggonHealth, "Sure you want a waggon without health?");
 
+
+		_bulletHellManagers = GetComponentsInChildren<BulletHellManager>();
+		foreach (BulletHellManager bhm in _bulletHellManagers)
+		{
+			bhm.IsFriendlyFire = true;
+		}
+
 		AfterAwake();
 	}
 
@@ -64,17 +76,13 @@ public class Waggon : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		_bulletHellManagers = GetComponentsInChildren<BulletHellManager>();
-		foreach (BulletHellManager bhm in _bulletHellManagers)
-		{
-			bhm.IsFriendlyFire = true;
-		}
-
-			if (!IsConnected)
+		if (!IsConnected)
 		{
 			OnDisconnectEvent();
 		}
     }
+
+	private LineRenderer _connectionLine;
 
 	public void OnConnectEvent()
 	{
@@ -85,6 +93,9 @@ public class Waggon : MonoBehaviour
 		{
 			bhm.enabled = true;
 		}
+
+		// Spawn Connection Line
+		_connectionLine = (Instantiate(Resources.Load("WaggonConnectionLine", typeof(GameObject)) as GameObject)).GetComponent<LineRenderer>();
 		
 	}
 	public void OnDisconnectEvent()
@@ -95,6 +106,12 @@ public class Waggon : MonoBehaviour
 		foreach (BulletHellManager bhm in _bulletHellManagers)
 		{
 			bhm.enabled = false;
+		}
+
+		if(_connectionLine != null)
+		{
+			Destroy(_connectionLine.gameObject);
+			_connectionLine = null;
 		}
 	}
 
@@ -111,6 +128,8 @@ public class Waggon : MonoBehaviour
 		UpdatePosition();
 
 		UpdateRotation();
+
+		UpdateConnectionLine();
 	}
 
 	protected virtual void BeforeFixedUpdate()
@@ -167,6 +186,21 @@ public class Waggon : MonoBehaviour
 		}
 
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, yAngle, GetTiltAngle());
+	}
+
+	protected virtual void UpdateConnectionLine()
+	{
+		if(_connectionLine == null)
+		{
+			return;
+		}
+
+		_connectionLine.transform.position = FrontConnectionPoint;
+		
+		_connectionLine.SetPositions(new Vector3[]{
+			BackConnectionPoint + transform.up * 0.9f,
+			PreviousWaggon.BackConnectionPoint + PreviousWaggon.transform.up * 0.9f,
+		});
 	}
 
 	protected float GetTiltAngle()
