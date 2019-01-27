@@ -16,6 +16,13 @@ public class BulletHellManager : MonoBehaviour
     private PatternParser rotatePattern;
     private PatternParser spawnPattern;
 
+	[SerializeField] private AudioClip _soundFX;
+	[SerializeField] private bool _onlyPlayOnFire;
+
+	private const float AUDIO_SOURCE_VOLUME = 0.5f;
+
+	private AudioSource _audioSource;
+
     private void UpdateSpawnPattern(string value)
     {
         spawnPattern = new PatternParser(spawnFrequency, true);
@@ -38,7 +45,27 @@ public class BulletHellManager : MonoBehaviour
     {
         UpdateSpawnPattern(spawnFrequency);
         UpdateRotatePattern(rotationFrequency);
+
+		if(_soundFX != null)
+		{
+			_audioSource = gameObject.AddComponent<AudioSource>();
+			//_audioSource.volume = AUDIO_SOURCE_VOLUME;
+			_audioSource.clip = _soundFX;
+		}
+
+		if(!_onlyPlayOnFire && _audioSource != null)
+		{
+			_audioSource.Play();
+		}
     }
+
+	void OnDisable()
+	{
+		if(_audioSource != null)
+		{
+			_audioSource.Stop();
+		}
+	}
 
     void Update()
     {
@@ -83,6 +110,11 @@ public class BulletHellManager : MonoBehaviour
                     break;
 
                 default:
+					if(_onlyPlayOnFire && _audioSource != null)
+					{
+						_audioSource.pitch = Random.Range(0.9f, 1.1f);
+						_audioSource.Play();
+					}
                     Bullet obj = Instantiate<Bullet>(bullet, transform.position + transform.TransformVector(bulletSpawnOffset), transform.rotation);
 					obj.IsFriendly = IsFriendlyFire;
 					obj.Launch((transform.forward * speed) + relativeVelocity);
