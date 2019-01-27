@@ -30,9 +30,21 @@
             ]
 		},
         {
+            "id": "waggons",
+			"onSides": false,
+            "initialDelay": 0,
+            "minSpawnDelay": 1000,
+            "maxSpawnDelay": 10000,
+			"minRotation": -20,
+			"maxRotation": 20,
+            "globalObjects": [
+                 "Waggons/SM_Wagen_FlammenwerferLV1","Waggons/SM_Wagen_GattlinLV1","Waggons/SM_Wagen_GewehrLV1","Waggons/SM_Wagen_RaketeLV1","Waggons/SM_Wagen_TeslaLV1"
+           ]
+        },
+        {
             "id": "wave1",
 			"onRoads": false,
-            "initialDelay": 0,
+            "initialDelay": 10000,
             "minSpawnDelay": 100,
             "maxSpawnDelay": 1000,
 			"minRotation": -20,

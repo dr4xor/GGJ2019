@@ -50,3 +50,5 @@ MonoBehaviour:
   rotationFrequency: 20,1,loop 1,20,20,-1,loop 1,40,20,1,loop 1,20
   spawnFrequency: 50,x,50,x,50,x,2000,delay
   speed: 200
+  _soundFX: {fileID: 0}
+  _onlyPlayOnFire: 0
