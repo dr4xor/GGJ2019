@@ -22,15 +22,5 @@ public class EnemyObjectDetector : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("FriendlyBullet"))
-		{
-			// Deal damage
-			_enemy.Health.ApplyDamage(other.GetComponent<Bullet>().damage);
-		}
-		else if (other.CompareTag("Waggon") || other.CompareTag("Locomotive"))
-		{
-			// Kill instantly
-			_enemy.Health.ApplyDamage(1000);
-		}
 	}
 }

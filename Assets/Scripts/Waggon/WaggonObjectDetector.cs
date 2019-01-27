@@ -30,6 +30,10 @@ public class WaggonObjectDetector : MonoBehaviour
 		{
 			OnSolidBarrierHit(other.GetComponent<SolidBarrier>());
 		}
+		else if (other.CompareTag("Enemy"))
+		{
+			OnEnemyHit(other.GetComponent<Enemy>());
+		}
 	}
 
 
@@ -43,6 +47,15 @@ public class WaggonObjectDetector : MonoBehaviour
 		Debug.Log(gameObject.name + " Hit a harmfull object with " + barrier.Damage + " damage");
 		_waggon.Health.ApplyDamage(barrier.Damage);
 		barrier.OnCollisionEvent();
+	}
+
+	protected virtual void OnEnemyHit(Enemy hitEnemy)
+	{
+		_waggon.Health.ApplyDamage(hitEnemy.CollisionDamage);
+
+		// Kill the enemy
+		hitEnemy.Health.ApplyDamage(1000);
+		
 	}
 
 

@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 
 	[SerializeField] private GameObject _destroyEffect;
 
+	[SerializeField] private int _collisionDamage;
+	public int CollisionDamage => _collisionDamage;
+
     // Start is called before the first frame update
     void Start()
     {
