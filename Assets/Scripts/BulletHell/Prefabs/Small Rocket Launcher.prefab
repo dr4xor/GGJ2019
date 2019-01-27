@@ -46,7 +46,7 @@ MonoBehaviour:
   relativeVelocity: {x: 0, y: 0, z: 0}
   bulletSpawnOffset: {x: 0, y: 0, z: 0}
   IsFriendlyFire: 0
-  bullet: {fileID: 4750169626860160343, guid: 352004b8514bccd4b8fa0068bceb0bb6, type: 3}
+  bullet: {fileID: 5172888098609596853, guid: 3c06b9642ff962043b5f63a61e711eaf, type: 3}
   rotationFrequency: 20,1,loop 1,20,20,-1,loop 1,40,20,1,loop 1,20
   spawnFrequency: 50,x,50,x,50,x,2000,delay
   speed: 200
