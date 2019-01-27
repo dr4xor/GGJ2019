@@ -38,7 +38,7 @@
 			"minRotation": -20,
 			"maxRotation": 20,
             "globalObjects": [
-                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret", "Enemies/Enemy_Panzer", "Enemy_Pferdinand_Left", "Enemy_Pferdinand_Right"
+                 "Enemies/Enemy_Moleman", "Enemies/Enemy_Saloon", "Enemies/Enemy_Turret", "Enemies/Enemy_Panzer", "Enemies/Enemy_Pferdinant_Left", "Enemies/Enemy_Pferdinand_Right"
            ]
         }
     ]

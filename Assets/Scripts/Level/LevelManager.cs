@@ -78,19 +78,25 @@ public class LevelManager : MonoBehaviour
                             }
                         }
 
-                        GameObject obj;
-                        if (seq.objects.Length> 0)
+                        string objPath;
+                        if (seq.objects != null)
                         {
                             // load prop object
                             int idx = Random.Range(0, seq.objects.Length);
-                            obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
-                        } else
+                            objPath = "Environment/" + level.artSet + "/" + seq.objects[idx];
+                        }
+                        else
                         {
                             // load global object
                             int idx = Random.Range(0, seq.globalObjects.Length);
-                            obj = Resources.Load(seq.globalObjects[idx], typeof(GameObject)) as GameObject;
+                            objPath = seq.globalObjects[idx];
                         }
 
+                        GameObject obj = Resources.Load(objPath, typeof(GameObject)) as GameObject;
+                        if (obj == null)
+                        {
+                            Debug.Log("Object not found: " + objPath);
+                        }
                         obj = Instantiate(obj, pos, obj.transform.rotation);
                         obj.transform.parent = root.transform;
 
