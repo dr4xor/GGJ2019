@@ -35,6 +35,7 @@ public class WaggonObjectDetector : MonoBehaviour
 
 	protected virtual void OnCollectableWaggonHit(Waggon waggon)
 	{
+
 	}
 	
 	protected virtual void OnSolidBarrierHit(SolidBarrier barrier)

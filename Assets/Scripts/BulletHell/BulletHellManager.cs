@@ -3,6 +3,7 @@
 public class BulletHellManager : MonoBehaviour
 {
 	public Vector3 relativeVelocity;
+	public Vector3 bulletSpawnOffset;
 	public bool IsFriendlyFire;
 
     public Bullet bullet;
@@ -82,7 +83,7 @@ public class BulletHellManager : MonoBehaviour
                     break;
 
                 default:
-                    Bullet obj = Instantiate<Bullet>(bullet, transform.position, transform.rotation);
+                    Bullet obj = Instantiate<Bullet>(bullet, transform.position + transform.TransformVector(bulletSpawnOffset), transform.rotation);
 					obj.IsFriendly = IsFriendlyFire;
 					obj.Launch((transform.forward * speed) + relativeVelocity);
                     break;

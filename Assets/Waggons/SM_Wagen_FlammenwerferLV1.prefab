@@ -265,9 +265,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4224643990371415799}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1d887ff1e968ef443b9acb773b5c76d0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 51ee3ac6454ba5e4b9eab12decf8202e, type: 2}
+  m_Controller: {fileID: 9100000, guid: bcd8ad0f3d5937b4d8a1f7c11bfc3314, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -288,9 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09e0af82f6a1bb41af7a64c0fa398a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextLevelWaggonPrefab: {fileID: 3196913471041727503, guid: 3162eef7a2ee55a42b50b788e3343450,
+    type: 3}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
-  _bulletHellManager: {fileID: 0}
   _waggonLength: 5
   _waggonWidth: 2
   _waggonTiltFactor: 3

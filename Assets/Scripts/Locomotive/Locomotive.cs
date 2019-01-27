@@ -115,15 +115,42 @@ public class Locomotive : Waggon
 			Debug.LogError("Every Waggon Prefab needs to contain a Waggon Script! Waggon could not be added!");
 			return;
 		}
+		
 
 		List<Waggon> waggons = Waggons;
+		
+		if(waggon.NextLevelWaggonPrefab != null)
+		{
+			foreach (Waggon w in waggons)
+			{
+				if (w.NextLevelWaggonPrefab == waggon.NextLevelWaggonPrefab)
+				{
+					// COMBINE THEM
+					Waggon prevWaggon = w.PreviousWaggon;
 
+					Waggon combinedWaggon = Instantiate(waggon.NextLevelWaggonPrefab.gameObject).GetComponent<Waggon>();
+					prevWaggon.NextWaggon = combinedWaggon;
+					combinedWaggon.PreviousWaggon = prevWaggon;
+					combinedWaggon.NextWaggon = w.NextWaggon;
+
+					if(w.NextWaggon != null)
+					{
+						w.NextWaggon.PreviousWaggon = combinedWaggon;
+					}
+
+					Destroy(w.gameObject);
+					Destroy(waggon.gameObject);
+
+					combinedWaggon.OnConnectEvent();
+					return;
+				}
+			}
+		}
+		
 		Waggon lastWaggon = waggons[waggons.Count - 1];
 
 		waggon.PreviousWaggon = lastWaggon;
 		lastWaggon.NextWaggon = waggon;
-
-		waggons.Add(waggon);
 		
 		waggon.OnConnectEvent();
 	}

@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09e0af82f6a1bb41af7a64c0fa398a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextLevelWaggonPrefab: {fileID: 283812011092062958, guid: d0339d1fcf1131a4788b38bdeaec661c,
+    type: 3}
   PreviousWaggon: {fileID: 0}
   NextWaggon: {fileID: 0}
-  _bulletHellManager: {fileID: 5505726318894239882}
   _waggonLength: 5
   _waggonWidth: 2
   _waggonTiltFactor: 3
@@ -499,15 +500,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7675893941531912332}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5505726318894239882 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2805184246172416006, guid: 46aa214c93dc5be4b8cad1f7f5698a83,
-    type: 3}
-  m_PrefabInstance: {fileID: 7675893941531912332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade86eec9f1301549bcea5449c2d32c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
