@@ -78,9 +78,19 @@ public class LevelManager : MonoBehaviour
                             }
                         }
 
-                        // load object
-                        int idx = Random.Range(0, seq.objects.Length);
-                        GameObject obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
+                        GameObject obj;
+                        if (seq.objects.Length> 0)
+                        {
+                            // load prop object
+                            int idx = Random.Range(0, seq.objects.Length);
+                            obj = Resources.Load("Environment/" + level.artSet + "/" + seq.objects[idx], typeof(GameObject)) as GameObject;
+                        } else
+                        {
+                            // load global object
+                            int idx = Random.Range(0, seq.globalObjects.Length);
+                            obj = Resources.Load(seq.globalObjects[idx], typeof(GameObject)) as GameObject;
+                        }
+
                         obj = Instantiate(obj, pos, obj.transform.rotation);
                         obj.transform.parent = root.transform;
 

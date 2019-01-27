@@ -10,6 +10,7 @@ public class LevelSequence
     public int minRotation;
     public int maxRotation;
     public string[] objects;
+    public string[] globalObjects;
 
     // runtime properties
     public float firstSpawnTime;
